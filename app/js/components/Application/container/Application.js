@@ -10,11 +10,19 @@ export default class Application extends React.Component {
             <div className="container">
                 <div className="live-message">
                     <h1>SpaceX Calendar</h1>
-                    <p>SpaceX rockets launch dates, videos and other great stuff about companys work.</p>
+                    <p>
+                        SpaceX rockets launch dates,
+                        videos and other great stuff
+                        about companys work.
+                     </p>
                 </div>
                 <header>
-                    <NavLink exact activeClassName="current" to="/">Home</NavLink>
-                    <NavLink activeClassName="current" to="/missions">Missions</NavLink>
+                    <NavLink exact activeClassName="current" to="/">
+                        Home
+                    </NavLink>
+                    <NavLink activeClassName="current" to="/missions">
+                        Missions
+                    </NavLink>
                 </header>
                 <Switch>
                     <Route exact path="/" component={Home}/>

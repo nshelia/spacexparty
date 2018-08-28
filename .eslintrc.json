@@ -18,7 +18,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 2015,
+        "ecmaVersion": 2017,
         "sourceType": "module"
     },
     "plugins": [
@@ -103,7 +103,7 @@
         "lines-between-class-members": "error",
         "max-classes-per-file": "error",
         "max-depth": "error",
-        "max-len": "error",
+        "max-len": ["error", {"code": 150}],
         "max-lines": "error",
         "max-lines-per-function": "error",
         "max-nested-callbacks": "error",
