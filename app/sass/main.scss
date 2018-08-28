@@ -1,0 +1,13 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "~bootstrap/scss/bootstrap-reboot.scss";
+@import "config.scss";
+@import "components/*.scss";
+
+body {
+	background: $black;
+	color: $white;
+}
+.box {
+	padding:10px;
+	border-radius:5px;
+}
