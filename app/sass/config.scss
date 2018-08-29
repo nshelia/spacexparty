@@ -2,5 +2,40 @@ $black: #0c0c0c;
 $white: #F2F2F2;
 $blue: #005288;
 $gray: #A7A9AC;
-$lightBox: #292929;
+$darkGrey: #333;
+$boxColor: #292929;
 $lightText: #21272b;
+
+@keyframes fade-in {
+	from { opacity: 0}
+	to 	 { opacity: 1 }
+}
+
+body {
+	background: $black;
+	color: $white;
+}
+
+.box {
+	position:relative;
+	padding:10px;
+	border-radius:5px;
+	background: $boxColor;
+	&.box-inner {
+		background: $black;
+	}
+}
+.loader{
+	width:50px;
+	height:50px;
+	background: url('imgs/tail-spin.svg') no-repeat;
+	background-size:50px 50px;
+	position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.fade-ready {
+	animation: fade-in 0.2s forwards; 
+}

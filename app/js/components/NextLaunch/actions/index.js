@@ -14,10 +14,13 @@ export const fetchNextLaunchRequestAction = createAction(FETCH_NEXT_LAUNCH_REQUE
 export const fetchNextLaunchSuccessAction = createAction(FETCH_NEXT_LAUNCH_SUCCESS)
 
 export const fetchNextLaunchAction = () => async (dispatch) => {
-   dispatch(fetchNextLaunchRequestAction())
-   const data = await api.getNextLaunch()
-
-   dispatch(fetchNextLaunchSuccessAction(data))
+	try {
+		dispatch(fetchNextLaunchRequestAction())
+	   	const { data: launch } = await api.getNextLaunch()
+	   	dispatch(fetchNextLaunchSuccessAction(launch))
+	} catch (err) {
+	   	dispatch(fetchNextLaunchFailureAction(err))
+	}
 }
 
 export const clearStoreAction = createAction(CLEAR_STORE)

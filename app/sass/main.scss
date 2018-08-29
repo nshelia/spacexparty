@@ -3,11 +3,3 @@
 @import "config.scss";
 @import "components/*.scss";
 
-body {
-	background: $black;
-	color: $white;
-}
-.box {
-	padding:10px;
-	border-radius:5px;
-}

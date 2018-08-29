@@ -15,15 +15,15 @@ export default class Application extends React.Component {
                         videos and other great stuff
                         about companys work.
                      </p>
+                    <header>
+                        <NavLink exact activeClassName="current" to="/">
+                            Home
+                        </NavLink>
+                        <NavLink activeClassName="current" to="/missions">
+                            Missions
+                        </NavLink>
+                    </header>
                 </div>
-                <header>
-                    <NavLink exact activeClassName="current" to="/">
-                        Home
-                    </NavLink>
-                    <NavLink activeClassName="current" to="/missions">
-                        Missions
-                    </NavLink>
-                </header>
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route path="/missions" component={Missions}/>

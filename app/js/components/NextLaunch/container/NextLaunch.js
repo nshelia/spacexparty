@@ -3,21 +3,42 @@ import { connect } from "react-redux";
 import { moduleName } from '../config'
 import { fetchNextLaunchAction } from 'components/NextLaunch/actions'
 import PropTypes from 'prop-types'
+import Countdown from 'react-countdown-now';
 
 class NextLaunch extends React.Component {
-    componentDidMount() {
-        this.props.fetchNextLaunchAction()
+  constructor() {
+    super()
+    this.countdownRenderer = this.countdownRenderer.bind(this)
+  }
+  componentDidMount() {
+      this.props.fetchNextLaunchAction()
+  }
+  countdownRenderer({ hours, minutes, seconds, completed }) {
+    if (completed) {
+      return 'You can watch live here'
+    } else {
+      return <span className="countdown">{hours}:{minutes}:{seconds}</span>;
     }
-
-    render() {
-        return (
-            <div className="box next-launch">
-                <span>Next rocket launch is in:</span>
-                <div className="next-launch__countdown">
-                </div>
-            </div>
-        )
-    }
+  }
+  render() {
+    return (
+      <div className="box next-launch fade-ready">
+        <span>Upcoming launch countdown</span>
+        <div className="next-launch__countdown box box-inner fade-ready">
+          {this.props.isFetched 
+            ? 
+            (
+              <Countdown
+                date={this.props.launchDateUTC}
+                renderer={this.countdownRenderer}
+              />
+            ) 
+            : <div className="loader"/>
+          }
+        </div>
+      </div>
+    )
+  }
 }
 
 NextLaunch.propTypes = {
