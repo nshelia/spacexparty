@@ -3,13 +3,16 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: node:6.9.4
+image: node:8.11.4
 
 pipelines:
   default:
     - step:
+        name: Deploy to Heroku
+        deployment: production
         caches:
           - node
-        script: # Modify the commands below to build your repository.
+        script: 
           - npm install
-          - npm test
+          - npm run build
+          - git push -f https://heroku:9af94079-322a-443b-a068-d33168256f76@git.heroku.com/spacexcalendar-v2.git HEAD

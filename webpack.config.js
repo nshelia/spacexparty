@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
 
 module.exports = {
-  entry: "./src/frontend/app/js/entry", 
+  entry: "./src/frontend/js/entry", 
   output: {
     path: path.resolve(__dirname, "build"), 
     filename: "bundle.js",
@@ -13,10 +13,10 @@ module.exports = {
   resolve: {
 		modules: [
 		  "node_modules",
-		  mainPath("app"),
-		  mainPath("app/js"),
-		  mainPath("app/sass"),
-      mainPath("app/imgs"),
+		  mainPath("src"),
+		  mainPath("js"),
+		  mainPath("sass"),
+      mainPath("imgs"),
 		],
 		extensions: [".js"],
 	},
