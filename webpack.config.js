@@ -1,20 +1,22 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
+
 module.exports = {
-  entry: "./app/js/entry", 
+  entry: "./src/frontend/app/js/entry", 
   output: {
-    path: path.resolve(__dirname, "dist"), 
+    path: path.resolve(__dirname, "build"), 
     filename: "bundle.js",
-    publicPath: "/", 
+    publicPath: '/', 
   },
   resolve: {
 		modules: [
 		  "node_modules",
-		  path.resolve(__dirname, "app"),
-		  path.resolve(__dirname, "app/js"),
-		  path.resolve(__dirname, "app/sass"),
-      path.resolve(__dirname, "app/imgs"),
+		  mainPath("app"),
+		  mainPath("app/js"),
+		  mainPath("app/sass"),
+      mainPath("app/imgs"),
 		],
 		extensions: [".js"],
 	},
@@ -48,10 +50,14 @@ module.exports = {
 		]
 	},
   devServer: {
-    contentBase: path.resolve(__dirname, "dist"), 
+    port: 3000,
+    open: true,
     compress: true, 
     https: false, 
     historyApiFallback: true,
+    proxy: {
+        "/api": "http://localhost:8080"
+    }
   },
   plugins: [
  		new HtmlWebpackPlugin({
