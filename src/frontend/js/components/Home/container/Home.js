@@ -9,7 +9,7 @@ export default class Home extends React.Component {
 					<NextLaunch/>
 				</div>
 				<div className="col-8">
-					Recent launches co
+					Recent co
 				</div>
 			</div>
 		)
