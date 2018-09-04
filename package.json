@@ -5,7 +5,7 @@
     "build": "webpack",
     "start": "node src/backend/server.js",
     "dev": "concurrently \"webpack-dev-server\" \"nodemon src/backend/server.js\"",
-    "eslint": "eslint src/frontend/app/js --fix"
+    "eslint": "eslint src/frontend/js --fix"
   },
   "repository": {
     "type": "git",
