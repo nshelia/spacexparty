@@ -11,10 +11,10 @@ import 'main.scss'
 const store = configureStore()
 
 ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <Application/>
-       </BrowserRouter>
-    </Provider>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Application/>
+    </BrowserRouter>
+  </Provider>,
   document.body.appendChild(document.createElement('main'))
 )

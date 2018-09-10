@@ -10,29 +10,31 @@ class NextLaunch extends React.Component {
     super()
     this.countdownRenderer = this.countdownRenderer.bind(this)
   }
+
   componentDidMount() {
-      this.props.fetchNextLaunchAction()
+    this.props.fetchNextLaunchAction()
   }
+
   countdownRenderer({ hours, minutes, seconds, completed }) {
     if (completed) {
       return 'You can watch live here'
-    } else {
-      return <span className="countdown">{hours}:{minutes}:{seconds}</span>;
     }
+
+    return <span className="countdown">{hours}:{minutes}:{seconds}</span>;
+
   }
+
   render() {
     return (
       <div className="box next-launch fade-ready">
         <span>Upcoming launch countdown</span>
         <div className="next-launch__countdown box box-inner fade-ready">
-          {this.props.isFetched 
-            ? 
-            (
-              <Countdown
-                date={this.props.launchDateUTC}
-                renderer={this.countdownRenderer}
-              />
-            ) 
+          {this.props.isFetched
+            ? <Countdown
+              date={this.props.launchDateUTC}
+              renderer={this.countdownRenderer}
+            />
+
             : <div className="loader"/>
           }
         </div>
@@ -42,14 +44,16 @@ class NextLaunch extends React.Component {
 }
 
 NextLaunch.propTypes = {
-    fetchNextLaunchAction: PropTypes.func.isRequired
+  isFetched: PropTypes.bool.isRequired,
+  launchDateUTC: PropTypes.string.isRequired,
+  fetchNextLaunchAction: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => state[moduleName]
 
 
 const mapDispatchToProps = {
-    fetchNextLaunchAction
+  fetchNextLaunchAction
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(NextLaunch)

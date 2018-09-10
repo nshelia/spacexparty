@@ -11,7 +11,7 @@ pipelines:
         script: 
           - node --version
           - npm --version
-          - npm cache clean
           - npm install
           - npm run build
+          - npm test
           - git push -f https://heroku:9af94079-322a-443b-a068-d33168256f76@git.heroku.com/spacexcalendar-v2.git HEAD

@@ -18,7 +18,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 2017,
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "plugins": [
@@ -78,7 +78,7 @@
             "error",
             "beside"
         ],
-        "indent": "off",
+        "indent": ["error", 2],
         "indent-legacy": "off",
         "init-declarations": "error",
         "jsx-quotes": [
@@ -193,7 +193,6 @@
         "no-sync": "error",
         "no-tabs": "off",
         "no-template-curly-in-string": "error",
-        "no-ternary": "error",
         "no-throw-literal": "error",
         "no-trailing-spaces": "error",
         "no-undef-init": "error",

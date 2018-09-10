@@ -1,14 +1,28 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
 
+console.log(process.env.NODE_ENV)
+
 module.exports = {
-  entry: "./src/frontend/js/entry", 
+  entry: "./src/frontend/js/entry",
   output: {
     path: path.resolve(__dirname, "build"), 
     filename: "bundle.js",
     publicPath: '/', 
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false
+          }
+        }
+      })
+    ]
   },
   resolve: {
 		modules: [
@@ -65,5 +79,5 @@ module.exports = {
       filename: 'index.html'
  		})
   ],
-  mode: "development"
+  mode: 'development'
 }

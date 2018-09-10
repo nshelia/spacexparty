@@ -6,9 +6,9 @@ import missionsReducer from "components/Missions/reducer";
 import nextLaunchReducer from "components/NextLaunch/reducer";
 
 export default combineReducers({
-	routing: routerReducer,
-	application: applicationReducer,
-	home: homeReducer,
-	missions: missionsReducer,
-	nextLaunch: nextLaunchReducer
+  routing: routerReducer,
+  application: applicationReducer,
+  home: homeReducer,
+  missions: missionsReducer,
+  nextLaunch: nextLaunchReducer
 });
