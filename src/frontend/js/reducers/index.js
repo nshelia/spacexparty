@@ -1,14 +1,29 @@
 import { combineReducers } from "redux";
 import { routerReducer } from 'react-router-redux'
-import applicationReducer from "components/Application/reducer";
-import homeReducer from "components/Home/reducer";
-import missionsReducer from "components/Missions/reducer";
-import nextLaunchReducer from "components/NextLaunch/reducer";
 
-export default combineReducers({
-  routing: routerReducer,
-  application: applicationReducer,
-  home: homeReducer,
-  missions: missionsReducer,
-  nextLaunch: nextLaunchReducer
-});
+const CONTEXT = require.context('../components', true, /\.\/(.*)\/index.js?$/i);
+
+const lowerCaseFirstLetter = (string) => string.charAt(0).toLowerCase() + string.slice(1)
+
+const importReducer = (req) => (obj, path) => {
+  if (path.includes('reducer')) {
+    const [
+      moduleState,
+      moduleName
+    ] = path.match(/\.\/(.*)\/index.js?$/i)
+    const reducer = {
+      [lowerCaseFirstLetter(moduleName.replace('/reducer',''))]: req(moduleState).default
+    };
+
+
+    return { ...obj,
+      ...reducer };
+  }
+
+  return { ...obj, };
+};
+
+const getReducers = (ctx) => ctx.keys().reduce(importReducer(ctx), { routing: routerReducer });
+
+export default combineReducers(getReducers(CONTEXT));
+

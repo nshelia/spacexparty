@@ -1,5 +1,6 @@
 import React from 'react'
 import { NextLaunch } from 'components/NextLaunch'
+import { RecentLaunches } from 'components/RecentLaunches'
 
 export default class Home extends React.Component {
   render() {
@@ -9,7 +10,7 @@ export default class Home extends React.Component {
           <NextLaunch/>
         </div>
         <div className="col-8">
-					Recent co
+          <RecentLaunches/>
         </div>
       </div>
     )

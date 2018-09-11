@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from "react-redux";
 import { moduleName } from '../config'
-import { fetchNextLaunchAction } from 'components/NextLaunch/actions'
+import {
+  fetchNextLaunchAction,
+  clearStoreAction
+} from 'components/NextLaunch/actions'
 import PropTypes from 'prop-types'
 import Countdown from 'react-countdown-now';
 
@@ -9,6 +12,10 @@ class NextLaunch extends React.Component {
   constructor() {
     super()
     this.countdownRenderer = this.countdownRenderer.bind(this)
+  }
+
+  componentWillUnmount() {
+    this.props.clearStoreAction()
   }
 
   componentDidMount() {
@@ -24,19 +31,29 @@ class NextLaunch extends React.Component {
 
   }
 
+  renderCountdown() {
+    if (this.props.isFetched) {
+      if (this.props.launchDateUTC) {
+        return (
+          <Countdown
+            date={this.props.launchDateUTC}
+            renderer={this.countdownRenderer}
+          />
+        )
+      }
+
+      return 'TBC'
+    }
+
+    return <div className="loader"/>
+  }
+
   render() {
     return (
       <div className="box next-launch fade-ready">
         <span>Upcoming launch countdown</span>
         <div className="next-launch__countdown box box-inner fade-ready">
-          {this.props.isFetched
-            ? <Countdown
-              date={this.props.launchDateUTC}
-              renderer={this.countdownRenderer}
-            />
-
-            : <div className="loader"/>
-          }
+          {this.renderCountdown()}
         </div>
       </div>
     )
@@ -45,15 +62,17 @@ class NextLaunch extends React.Component {
 
 NextLaunch.propTypes = {
   isFetched: PropTypes.bool.isRequired,
-  launchDateUTC: PropTypes.string.isRequired,
-  fetchNextLaunchAction: PropTypes.func.isRequired
+  launchDateUTC: PropTypes.string,
+  fetchNextLaunchAction: PropTypes.func.isRequired,
+  clearStoreAction: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => state[moduleName]
 
 
 const mapDispatchToProps = {
-  fetchNextLaunchAction
+  fetchNextLaunchAction,
+  clearStoreAction
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(NextLaunch)
