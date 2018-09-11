@@ -78,7 +78,7 @@
             "error",
             "beside"
         ],
-        "indent": ["error", 2],
+        "indent": ["error", 2,{"SwitchCase": 1}],
         "indent-legacy": "off",
         "init-declarations": "error",
         "jsx-quotes": [
@@ -152,7 +152,6 @@
         "no-lone-blocks": "error",
         "no-lonely-if": "error",
         "no-loop-func": "error",
-        "no-magic-numbers": "error",
         "no-misleading-character-class": "error",
         "no-mixed-operators": "error",
         "no-mixed-requires": "error",
@@ -243,7 +242,6 @@
         "require-atomic-updates": "error",
         "require-await": "error",
         "require-jsdoc": "off",
-        "require-unicode-regexp": "error",
         "rest-spread-spacing": "error",
         "semi": "off",
         "semi-spacing": "error",
