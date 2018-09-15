@@ -34,7 +34,8 @@ export default (state = initialState,action) => {
         rocket: launch.rocket,
         missionName: launch.mission_name,
         launchDateUTC: launch.launch_date_utc,
-        staticFireDateUTC: launch.static_fire_date_utc
+        staticFireDateUTC: launch.static_fire_date_utc,
+        payloads: launch.rocket.second_stage.payloads
       }
     }
     case FETCH_NEXT_LAUNCH_FAILURE: {

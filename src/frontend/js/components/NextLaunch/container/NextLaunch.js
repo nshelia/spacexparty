@@ -50,12 +50,16 @@ class NextLaunch extends React.Component {
 
   render() {
     return (
-      <div className="box next-launch fade-ready">
-        <span>Upcoming launch countdown</span>
-        <div className="next-launch__countdown box box-inner fade-ready">
-          {this.renderCountdown()}
+      <React.Fragment>
+        <div className="box block-header">
+          Upcoming launch
         </div>
-      </div>
+        <div className="box next-launch fade-ready">
+          <div className="next-launch-countdown box box-inner fade-ready">
+            {this.renderCountdown()}
+          </div>
+        </div>
+      </React.Fragment>
     )
   }
 }

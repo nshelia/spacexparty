@@ -7,6 +7,8 @@ import {
 } from 'components/NextLaunch/actions'
 import PropTypes from 'prop-types'
 
+import { Launch } from 'components/Launch'
+
 class RecentLaunches extends React.Component {
   componentWillUnmount() {
     this.props.clearStoreAction()
@@ -14,9 +16,14 @@ class RecentLaunches extends React.Component {
 
   render() {
     return (
-      <div className="box">
-        Recent launches
-      </div>
+      <React.Fragment>
+        <div className="box block-header">
+          Recent launches
+        </div>
+        <div className="box recent-launches fade-ready">
+          <Launch/>
+        </div>
+      </React.Fragment>
     )
   }
 }

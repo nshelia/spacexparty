@@ -24,6 +24,12 @@ body {
 	&.box-inner {
 		background: $black;
 	}
+	&.block-header {
+		margin-bottom:10px;
+		.block-header-event {
+			color: $red;
+		}
+	}
 }
 .loader{
 	width:50px;

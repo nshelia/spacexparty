@@ -2,12 +2,11 @@
 	display:flex;
 	flex-direction:column;
 	justify-content:space-between;
-	height:150px;
 	width:100%;
 	> span {
 		display:block;
 	}
-	.next-launch__countdown {
+	.next-launch-countdown {
 		display:flex;
 		align-items:center;
 		justify-content:center;
