@@ -4,8 +4,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
 
-console.log(process.env.NODE_ENV)
-
 module.exports = {
   entry: "./src/frontend/js/entry",
   output: {
