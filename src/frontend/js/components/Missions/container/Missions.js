@@ -4,7 +4,7 @@ export default class Missions extends React.Component {
   render() {
     return (
       <div>
-				Missions Component
+		Missions Component
       </div>
     )
   }

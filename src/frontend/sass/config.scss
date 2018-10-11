@@ -23,12 +23,12 @@ body {
 	background: $boxColor;
 	&.box-inner {
 		background: $black;
+		margin-bottom:10px;
 	}
 	&.block-header {
+		box-shadow:0px 3px 0px rgba(31,31,31,0.8);
 		margin-bottom:10px;
-		.block-header-event {
-			color: $red;
-		}
+		font-weight:bold;
 	}
 }
 .loader{

@@ -11,13 +11,13 @@ const importReducer = (req) => (obj, path) => {
       moduleState,
       moduleName
     ] = path.match(/\.\/(.*)\/index.js?$/i)
-    const reducer = {
-      [lowerCaseFirstLetter(moduleName.replace('/reducer',''))]: req(moduleState).default
+    const reducer = { [lowerCaseFirstLetter(moduleName.replace('/reducer',''))]: req(moduleState).default };
+
+
+    return {
+      ...obj,
+      ...reducer
     };
-
-
-    return { ...obj,
-      ...reducer };
   }
 
   return { ...obj, };

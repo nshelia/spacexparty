@@ -2,25 +2,25 @@ import { createAction } from 'redux-actions';
 import api from 'api'
 
 import {
-  FETCH_NEXT_LAUNCH_REQUEST,
-  FETCH_NEXT_LAUNCH_FAILURE,
-  FETCH_NEXT_LAUNCH_SUCCESS,
+  FETCH_RECENT_LAUNCHES_REQUEST,
+  FETCH_RECENT_LAUNCHES_FAILURE,
+  FETCH_RECENT_LAUNCHES_SUCCESS,
   CLEAR_STORE
 } from './types'
 
 
-export const fetchNextLaunchFailureAction = createAction(FETCH_NEXT_LAUNCH_FAILURE)
-export const fetchNextLaunchRequestAction = createAction(FETCH_NEXT_LAUNCH_REQUEST)
-export const fetchNextLaunchSuccessAction = createAction(FETCH_NEXT_LAUNCH_SUCCESS)
+export const fetchRecentLaunchesFailureAction = createAction(FETCH_RECENT_LAUNCHES_FAILURE)
+export const fetchRecentLaunchesRequestAction = createAction(FETCH_RECENT_LAUNCHES_REQUEST)
+export const fetchRecentLaunchesSuccessAction = createAction(FETCH_RECENT_LAUNCHES_SUCCESS)
 
-export const fetchNextLaunchAction = () => async (dispatch) => {
+export const fetchRecentLaunchesAction = () => async (dispatch) => {
   try {
-    dispatch(fetchNextLaunchRequestAction())
-    const { data: launch } = await api.getNextLaunch()
+    dispatch(fetchRecentLaunchesRequestAction())
+    const { data: launch } = await api.getRecentLaunches()
 
-    dispatch(fetchNextLaunchSuccessAction(launch))
+    dispatch(fetchRecentLaunchesSuccessAction(launch))
   } catch (err) {
-    dispatch(fetchNextLaunchFailureAction(err))
+    dispatch(fetchRecentLaunchesFailureAction(err))
   }
 }
 

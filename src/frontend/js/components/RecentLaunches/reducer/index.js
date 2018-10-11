@@ -1,7 +1,7 @@
 import {
-  FETCH_NEXT_LAUNCH_REQUEST,
-  FETCH_NEXT_LAUNCH_FAILURE,
-  FETCH_NEXT_LAUNCH_SUCCESS,
+  FETCH_RECENT_LAUNCHES_REQUEST,
+  FETCH_RECENT_LAUNCHES_FAILURE,
+  FETCH_RECENT_LAUNCHES_SUCCESS,
   CLEAR_STORE
 } from '../actions/types'
 
@@ -14,7 +14,7 @@ const initialState = {
 
 export default (state = initialState,action) => {
   switch (action.type) {
-    case FETCH_NEXT_LAUNCH_REQUEST: {
+    case FETCH_RECENT_LAUNCHES_REQUEST: {
       return {
         ...state,
         isFetched: false,
@@ -22,22 +22,17 @@ export default (state = initialState,action) => {
         isFailed: false,
       }
     }
-    case FETCH_NEXT_LAUNCH_SUCCESS: {
-      const launch = action.payload
-
+    case FETCH_RECENT_LAUNCHES_SUCCESS: {
 
       return {
         ...state,
         isFetched: true,
         isFetching: false,
         isFailed: false,
-        rocket: launch.rocket,
-        missionName: launch.mission_name,
-        launchDateUTC: launch.launch_date_utc,
-        staticFireDateUTC: launch.static_fire_date_utc
+        data: action.payload
       }
     }
-    case FETCH_NEXT_LAUNCH_FAILURE: {
+    case FETCH_RECENT_LAUNCHES_FAILURE: {
       return {
         ...state,
         isFetched: false,
