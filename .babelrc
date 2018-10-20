@@ -1,4 +1,4 @@
 {
-	"presets": ["env","react"],
-	"plugins": ["transform-object-rest-spread",["transform-class-properties", { "spec": true }]]
+	"plugins": ["lodash","transform-object-rest-spread",["transform-class-properties", { "spec": true }]],
+	"presets": ["env","react"]
 }

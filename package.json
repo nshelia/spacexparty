@@ -15,11 +15,11 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/nshelia/spacexcalendar#readme",
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.5",
+    "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -32,6 +32,7 @@
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
     "import-glob-loader": "^1.1.0",
+    "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "node-sass": "^4.9.3",
     "prop-types": "^15.6.2",
@@ -52,6 +53,7 @@
     "uglifyjs-webpack-plugin": "^1.3.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.17.1",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
   }
