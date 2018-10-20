@@ -7,6 +7,7 @@ import {
 } from 'components/RecentLaunches/actions'
 import PropTypes from 'prop-types'
 import { Launch } from 'components/Launch'
+import LaunchPlaceholder from 'components/Placeholders/Launch'
 
 class RecentLaunches extends React.Component {
   componentWillUnmount() {
@@ -18,13 +19,21 @@ class RecentLaunches extends React.Component {
   }
 
   renderList() {
-    return this.props.data.map((item,index) => <Launch key={index} item={item}/>)
+    if (this.props.isFetched) {
+      return this.props.data.map((item,index) => <Launch key={index}
+        item={item}/>)
+    }
+
+    return <LaunchPlaceholder count={10} />
+
   }
 
   render() {
     return (
       <React.Fragment>
         <div className="box block-header">
+
+
           Recent launches
         </div>
         {this.renderList()}
@@ -34,9 +43,10 @@ class RecentLaunches extends React.Component {
 }
 
 RecentLaunches.propTypes = {
+  isFetched: PropTypes.bool.isRequired,
+  clearStoreAction: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({})),
   fetchRecentLaunchesAction: PropTypes.func.isRequired,
-  clearStoreAction: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => state[moduleName]

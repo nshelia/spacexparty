@@ -6,7 +6,7 @@ export default class Home extends React.Component {
     return (
       <div className="d-flex row">
         <div className="col-8">
-          <RecentLaunches/>
+          <RecentLaunches />
         </div>
       </div>
     )

@@ -27,7 +27,11 @@ class NextLaunch extends React.Component {
       return 'You can watch live here'
     }
 
-    return <span className="countdown">{hours}:{minutes}:{seconds}</span>;
+    return <span className="countdown">
+      {hours}:
+      {minutes}:
+      {seconds}
+    </span>;
 
   }
 
@@ -45,13 +49,15 @@ class NextLaunch extends React.Component {
       return 'TBC'
     }
 
-    return <div className="loader"/>
+    return <div className="loader" />
   }
 
   render() {
     return (
       <React.Fragment>
         <div className="box block-header">
+
+
           Upcoming launch
         </div>
         <div className="box next-launch fade-ready">
@@ -65,10 +71,10 @@ class NextLaunch extends React.Component {
 }
 
 NextLaunch.propTypes = {
+  clearStoreAction: PropTypes.func.isRequired,
+  fetchNextLaunchAction: PropTypes.func.isRequired,
   isFetched: PropTypes.bool.isRequired,
   launchDateUTC: PropTypes.string,
-  fetchNextLaunchAction: PropTypes.func.isRequired,
-  clearStoreAction: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => state[moduleName]

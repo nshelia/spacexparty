@@ -13,7 +13,7 @@ const store = configureStore()
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Application/>
+      <Application />
     </BrowserRouter>
   </Provider>,
   document.body.appendChild(document.createElement('main'))

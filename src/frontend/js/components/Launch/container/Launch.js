@@ -15,13 +15,20 @@ export default class Launch extends React.Component {
     const style = { boxShadow: `0px 3px 0px rgba(${_.random(5,45)},39,43)` }
 
     return (
-      <div className="launch" style={style}>
+      <div
+        className="launch fade-ready"
+        style={style}
+      >
         <div className="launch-image" >
-          <img src={item.links.mission_patch}/>
+          <img src={item.links.mission_patch} />
         </div>
         <div className="launch-details">
-          <h3>{item.mission_name}</h3>
-          <p>{item.details}</p>
+          <h3>
+            {item.mission_name}
+          </h3>
+          <p>
+            {item.details}
+          </p>
         </div>
       </div>
     )

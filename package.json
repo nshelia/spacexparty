@@ -15,6 +15,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/nshelia/spacexcalendar#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",

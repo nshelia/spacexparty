@@ -9,25 +9,49 @@ export default class Application extends React.Component {
     return (
       <div className="container">
         <div className="live-message">
-          <h1>SpaceX Calendar</h1>
+          <h1>
+
+
+SpaceX Calendar
+          </h1>
           <p>
+
+
                         SpaceX rockets launch dates,
                         videos and other great stuff
                         about companys work.
           </p>
           <header>
-            <NavLink exact activeClassName="current" to="/">
+            <NavLink
+              activeClassName="current"
+              exact
+              to="/"
+            >
+
+
                             Home
             </NavLink>
-            <NavLink activeClassName="current" to="/missions">
+            <NavLink
+              activeClassName="current"
+              to="/missions"
+            >
+
+
                             Missions
             </NavLink>
           </header>
         </div>
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/missions" component={Missions}/>
-          <Route component={NotFound}/>
+          <Route
+            exact
+            path="/"
+            component={Home}
+          />
+          <Route
+            path="/missions"
+            component={Missions}
+          />
+          <Route component={NotFound} />
         </Switch>
       </div>
     )
