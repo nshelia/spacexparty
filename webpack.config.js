@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
 
@@ -75,7 +76,8 @@ module.exports = {
  		new HtmlWebpackPlugin({
  			 title: 'Loading...',
       filename: 'index.html'
- 		})
+ 		}),
+    // new BundleAnalyzerPlugin()
   ],
   mode: 'development'
 }
