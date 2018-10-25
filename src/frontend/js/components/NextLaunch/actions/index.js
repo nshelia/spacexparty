@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import api from 'api'
+import { moduleName } from '../config'
 
 import {
   FETCH_NEXT_LAUNCH_REQUEST,
@@ -13,12 +14,17 @@ export const fetchNextLaunchFailureAction = createAction(FETCH_NEXT_LAUNCH_FAILU
 export const fetchNextLaunchRequestAction = createAction(FETCH_NEXT_LAUNCH_REQUEST)
 export const fetchNextLaunchSuccessAction = createAction(FETCH_NEXT_LAUNCH_SUCCESS)
 
-export const fetchNextLaunchAction = () => async (dispatch) => {
-  try {
-    dispatch(fetchNextLaunchRequestAction())
-    const { data: launch } = await api.getNextLaunch()
+export const fetchNextLaunchAction = () => async (dispatch,getState) => {
+  const moduleState = getState()[moduleName]
 
-    dispatch(fetchNextLaunchSuccessAction(launch))
+  try {
+    if (moduleState && (!moduleState.isFetching && !moduleState.isFetched)) {
+
+      dispatch(fetchNextLaunchRequestAction())
+      const { data: launch } = await api.getNextLaunch()
+
+      dispatch(fetchNextLaunchSuccessAction(launch))
+    }
   } catch (err) {
     dispatch(fetchNextLaunchFailureAction(err))
   }

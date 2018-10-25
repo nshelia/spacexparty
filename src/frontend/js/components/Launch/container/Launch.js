@@ -20,7 +20,7 @@ export default class Launch extends React.Component {
         style={style}
       >
         <div className="launch-image" >
-          <img src={item.links.mission_patch} />
+          <img src={item.links.mission_patch} alt={item.mission_name}/>
         </div>
         <div className="launch-details">
           <h3>
