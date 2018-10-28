@@ -6,7 +6,7 @@ export default class Home extends React.Component {
     return (
       <React.Fragment>
         <div className="d-flex row">
-          <div className="col-12">
+          <div className="col-8">
             <NextLaunch />
           </div>
         </div>

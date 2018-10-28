@@ -1,3 +1,5 @@
+import { handleActions } from 'redux-actions';
+
 import {
   FETCH_NEXT_LAUNCH_REQUEST,
   FETCH_NEXT_LAUNCH_FAILURE,
@@ -12,45 +14,39 @@ const initialState = {
   data: []
 }
 
-export default (state = initialState,action) => {
-  switch (action.type) {
-    case FETCH_NEXT_LAUNCH_REQUEST: {
-      return {
-        ...state,
-        isFetched: false,
-        isFetching: true,
-        isFailed: false,
-      }
+const reducerMap = {
+  [FETCH_NEXT_LAUNCH_REQUEST]: (state) => {
+    return {
+      ...state,
+      isFetched: false,
+      isFetching: true,
+      isFailed: false,
     }
-    case FETCH_NEXT_LAUNCH_SUCCESS: {
-      const launch = action.payload
+  },
+  [FETCH_NEXT_LAUNCH_SUCCESS]: (state,action) => {
+    const launch = action.payload
 
-
-      return {
-        ...state,
-        isFetched: true,
-        isFetching: false,
-        isFailed: false,
-        rocket: launch.rocket,
-        missionName: launch.mission_name,
-        launchDateUTC: launch.launch_date_utc,
-        staticFireDateUTC: launch.static_fire_date_utc,
-        payloads: launch.rocket.second_stage.payloads
-      }
+    return {
+      ...state,
+      isFetched: true,
+      isFetching: false,
+      isFailed: false,
+      rocket: launch.rocket,
+      missionName: launch.mission_name,
+      launchDateUTC: launch.launch_date_utc,
+      staticFireDateUTC: launch.static_fire_date_utc,
+      payloads: launch.rocket.second_stage.payloads
     }
-    case FETCH_NEXT_LAUNCH_FAILURE: {
-      return {
-        ...state,
-        isFetched: false,
-        isFetching: false,
-        isFailed: true,
-      }
+  },
+  [FETCH_NEXT_LAUNCH_FAILURE]: (state) => {
+    return {
+      ...state,
+      isFetched: false,
+      isFetching: false,
+      isFailed: true,
     }
-    case CLEAR_STORE: {
-      return initialState
-    }
-    default: {
-      return initialState
-    }
-  }
+  },
+  [CLEAR_STORE]: () => initialState
 }
+
+export default handleActions(reducerMap,initialState)

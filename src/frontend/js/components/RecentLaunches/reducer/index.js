@@ -1,3 +1,5 @@
+import { handleActions } from 'redux-actions';
+
 import {
   FETCH_RECENT_LAUNCHES_REQUEST,
   FETCH_RECENT_LAUNCHES_FAILURE,
@@ -12,40 +14,33 @@ const initialState = {
   data: []
 }
 
-export default (state = initialState,action) => {
-
-  switch (action.type) {
-    case FETCH_RECENT_LAUNCHES_REQUEST: {
-      return {
-        ...state,
-        isFetched: false,
-        isFetching: true,
-        isFailed: false,
-      }
+const reducerMap = {
+  [FETCH_RECENT_LAUNCHES_REQUEST]: (state) => {
+    return {
+      ...state,
+      isFetched: false,
+      isFetching: true,
+      isFailed: false,
     }
-    case FETCH_RECENT_LAUNCHES_SUCCESS: {
-
-      return {
-        ...state,
-        isFetched: true,
-        isFetching: false,
-        isFailed: false,
-        data: action.payload
-      }
+  },
+  [FETCH_RECENT_LAUNCHES_SUCCESS]: (state,action) => {
+    return {
+      ...state,
+      isFetched: true,
+      isFetching: false,
+      isFailed: false,
+      data: action.payload,
     }
-    case FETCH_RECENT_LAUNCHES_FAILURE: {
-      return {
-        ...state,
-        isFetched: false,
-        isFetching: false,
-        isFailed: true,
-      }
+  },
+  [FETCH_RECENT_LAUNCHES_FAILURE]: (state) => {
+    return {
+      ...state,
+      isFetched: false,
+      isFetching: false,
+      isFailed: true,
     }
-    case CLEAR_STORE: {
-      return initialState
-    }
-    default: {
-      return initialState
-    }
-  }
+  },
+  [CLEAR_STORE]: () => initialState
 }
+
+export default handleActions(reducerMap,initialState)

@@ -31,7 +31,6 @@
         "array-bracket-spacing": "error",
         "array-callback-return": "error",
         "array-element-newline": "error",
-        "arrow-body-style": "error",
         "arrow-parens": "error",
         "arrow-spacing": [
             "error",
@@ -203,7 +202,6 @@
         "no-useless-concat": "error",
         "no-useless-constructor": "error",
         "no-useless-rename": "error",
-        "no-useless-return": "error",
         "no-var": "error",
         "no-void": "error",
         "no-warning-comments": "error",
