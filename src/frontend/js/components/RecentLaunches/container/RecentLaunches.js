@@ -10,21 +10,26 @@ import { Launch } from 'components/Launch'
 import LaunchPlaceholder from 'components/Placeholders/Launch'
 
 class RecentLaunches extends React.Component {
+  static defaultProps = {
+    limit: 3
+  }
+
   componentWillUnmount() {
     this.props.clearStoreAction()
   }
 
   componentDidMount() {
-    this.props.fetchRecentLaunchesAction()
+    this.props.fetchRecentLaunchesAction(this.props.limit)
   }
 
   renderList() {
     if (this.props.isFetched) {
+
       return this.props.data.map((item,index) => <Launch key={index}
         item={item}/>)
     }
 
-    return <LaunchPlaceholder count={10} />
+    return <LaunchPlaceholder count={this.props.limit} />
 
   }
 
@@ -43,6 +48,7 @@ class RecentLaunches extends React.Component {
 }
 
 RecentLaunches.propTypes = {
+  limit: PropTypes.number.isRequired,
   isFetched: PropTypes.bool.isRequired,
   clearStoreAction: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({})),
