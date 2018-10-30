@@ -14,14 +14,14 @@ export const fetchRecentLaunchesFailureAction = createAction(FETCH_RECENT_LAUNCH
 export const fetchRecentLaunchesRequestAction = createAction(FETCH_RECENT_LAUNCHES_REQUEST)
 export const fetchRecentLaunchesSuccessAction = createAction(FETCH_RECENT_LAUNCHES_SUCCESS)
 
-export const fetchRecentLaunchesAction = () => async (dispatch,getState) => {
+export const fetchRecentLaunchesAction = (limit) => async (dispatch,getState) => {
   const moduleState = getState()[moduleName]
 
   try {
     if (moduleState && (!moduleState.isFetching && !moduleState.isFetched)) {
 
       dispatch(fetchRecentLaunchesRequestAction())
-      const { data: launch } = await api.getRecentLaunches()
+      const { data: launch } = await api.getRecentLaunches(limit)
 
       dispatch(fetchRecentLaunchesSuccessAction(launch))
     }

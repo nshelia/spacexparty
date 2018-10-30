@@ -1,15 +1,15 @@
-import axios from 'axios'
-
-const HOST = "https://api.spacexdata.com/v2"
+import { getRequest } from './request'
 
 export default {
   async getNextLaunch() {
-    const launch = await axios.get(`${HOST}/launches/next`)
+    const launch = await getRequest('launches/next')
 
     return launch
   },
-  async getRecentLaunches() {
-    const launch = await axios.get(`${HOST}/launches`)
+  async getRecentLaunches(limit) {
+    const launch = await getRequest('launches',{
+      limit
+    })
 
     return launch
   }
