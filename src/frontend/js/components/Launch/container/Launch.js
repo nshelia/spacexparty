@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 
-export default class Launch extends React.Component {
+export default class Launch extends React.PureComponent {
   static propTypes = {
     item: PropTypes.shape({
       mission_name: PropTypes.string.isRequired,

@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types'
 import Countdown from 'react-countdown-now';
 
-class NextLaunch extends React.Component {
+class NextLaunch extends React.PureComponent {
   constructor() {
     super()
     this.countdownRenderer = this.countdownRenderer.bind(this)
