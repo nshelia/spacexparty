@@ -3,8 +3,9 @@ import { Home } from 'components/Home'
 import { Missions } from 'components/Missions'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import { NotFound } from 'components/NotFound'
+import { hot } from 'react-hot-loader'
 
-export default class Application extends React.Component {
+class Application extends React.Component {
   render() {
     return (
       <div className="container">
@@ -57,3 +58,5 @@ SpaceX Calendar
     )
   }
 }
+
+export default hot(module)(Application)
