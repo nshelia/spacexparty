@@ -2,15 +2,23 @@ import { getRequest } from './request'
 
 export default {
   async getNextLaunch() {
-    const launch = await getRequest('launches/next')
+    const data = await getRequest('launches/next')
 
-    return launch
+    return data
   },
   async getRecentLaunches(limit) {
-    const launch = await getRequest('launches',{
+    const data = await getRequest('launches',{
       limit
     })
 
-    return launch
+    return data
+  },
+  async getMissions(limit,mission_id) {
+    const data = await getRequest('missions',{
+      limit,
+      mission_id
+    })
+
+    return data
   }
 }
