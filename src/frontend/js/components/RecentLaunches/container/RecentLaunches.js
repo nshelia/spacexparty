@@ -4,7 +4,7 @@ import { moduleName } from '../config'
 import {
   fetchRecentLaunchesAction,
   clearStoreAction
-} from 'components/RecentLaunches/actions'
+} from '../actions'
 import PropTypes from 'prop-types'
 import { Launch } from 'components/Launch'
 import LaunchPlaceholder from 'components/Placeholders/Launch'
@@ -26,7 +26,7 @@ class RecentLaunches extends React.Component {
     if (this.props.isFetched) {
 
       return this.props.data.map((item,index) => <Launch key={index}
-        item={item}/>)
+        item={item} />)
     }
 
     return <LaunchPlaceholder count={this.props.limit} />

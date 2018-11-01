@@ -21,9 +21,9 @@ export const fetchRecentLaunchesAction = (limit) => async (dispatch,getState) =>
     if (moduleState && (!moduleState.isFetching && !moduleState.isFetched)) {
 
       dispatch(fetchRecentLaunchesRequestAction())
-      const { data: launch } = await api.getRecentLaunches(limit)
+      const { data: items } = await api.getRecentLaunches(limit)
 
-      dispatch(fetchRecentLaunchesSuccessAction(launch))
+      dispatch(fetchRecentLaunchesSuccessAction(items))
     }
   } catch (err) {
     dispatch(fetchRecentLaunchesFailureAction(err))

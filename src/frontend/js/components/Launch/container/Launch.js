@@ -6,8 +6,29 @@ export default class Launch extends React.PureComponent {
   static propTypes = {
     item: PropTypes.shape({
       mission_name: PropTypes.string.isRequired,
-      links: PropTypes.shape({ mission_patch: PropTypes.string }).isRequired
+      links: PropTypes.shape({ mission_patch: PropTypes.string.isRequired })
     })
+  }
+
+  renderLaunchImage() {
+    const { item } = this.props
+
+    if (item.links) {
+      return <div className="launch-image" >
+        <img src={item.links.mission_patch} alt={item.mission_name} />
+      </div>
+    }
+
+    return null
+
+  }
+
+  renderLaunchDetails() {
+    const { item } = this.props
+    const details = item.details || item.description
+
+
+    return <p>{details}</p>
   }
 
   render() {
@@ -19,16 +40,12 @@ export default class Launch extends React.PureComponent {
         className="launch fade-ready"
         style={style}
       >
-        <div className="launch-image" >
-          <img src={item.links.mission_patch} alt={item.mission_name}/>
-        </div>
+        {this.renderLaunchImage()}
         <div className="launch-details">
           <h3>
             {item.mission_name}
           </h3>
-          <p>
-            {item.details}
-          </p>
+          {this.renderLaunchDetails()}
         </div>
       </div>
     )

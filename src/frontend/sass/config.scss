@@ -14,6 +14,7 @@ $lightText: #21272b;
 body {
 	background: $black;
 	color: $white;
+	overflow-y: scroll;
 }
 
 .box {

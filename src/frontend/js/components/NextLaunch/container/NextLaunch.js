@@ -4,7 +4,7 @@ import { moduleName } from '../config'
 import {
   fetchNextLaunchAction,
   clearStoreAction
-} from 'components/NextLaunch/actions'
+} from '../actions'
 import PropTypes from 'prop-types'
 import Countdown from 'react-countdown-now';
 
