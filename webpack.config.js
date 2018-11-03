@@ -1,10 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const webpack = require('webpack')
 
 const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
 
 module.exports = {
+  mode: 'development',
   entry: {
     index: "./src/frontend/js/entry"
   },
@@ -48,7 +50,8 @@ module.exports = {
         test: /\.scss$/,
         use: [
             "style-loader", 
-            "css-loader", 
+            "css-loader",
+            "postcss-loader?sourceMap", 
             "resolve-url-loader",
             "sass-loader?sourceMap",
             "import-glob-loader"
@@ -80,5 +83,4 @@ module.exports = {
       filename: 'index.html'
  		}),
   ],
-  mode: 'development'
 }

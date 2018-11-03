@@ -1,4 +1,10 @@
 {
-	"plugins": ["lodash","@babel/plugin-proposal-object-rest-spread",["@babel/plugin-proposal-class-properties", { "spec": true }],"react-hot-loader/babel","@babel/plugin-syntax-dynamic-import"],
+	"plugins": [
+		"lodash",
+		"@babel/plugin-proposal-object-rest-spread",
+		["@babel/plugin-proposal-class-properties", { "spec": true }],
+		"react-hot-loader/babel",
+		"@babel/plugin-syntax-dynamic-import"
+	],
 	"presets": ["@babel/preset-env","@babel/preset-react"]
 }
