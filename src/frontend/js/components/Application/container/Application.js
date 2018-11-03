@@ -1,6 +1,7 @@
 import React from 'react'
 import { Home } from 'components/Home'
 import { Missions } from 'components/Missions'
+import { Launches } from 'components/Launches'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import { NotFound } from 'components/NotFound'
 import { hot } from 'react-hot-loader'
@@ -40,6 +41,14 @@ SpaceX Calendar
 
                             Missions
             </NavLink>
+            <NavLink
+              activeClassName="current"
+              to="/launches"
+            >
+
+
+                            Launches
+            </NavLink>
           </header>
         </div>
         <Switch>
@@ -51,6 +60,10 @@ SpaceX Calendar
           <Route
             path="/missions"
             component={Missions}
+          />
+          <Route
+            path="/launches"
+            component={Launches}
           />
           <Route component={NotFound} />
         </Switch>

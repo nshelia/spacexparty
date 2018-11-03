@@ -2,7 +2,7 @@
   "name": "spacexcalendar",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --mode=production",
+    "build": "SET NODE_ENV=production & webpack",
     "start": "node src/backend/server.js",
     "dev": "concurrently \"webpack-dev-server --hot\" \"nodemon src/backend/server.js\"",
     "test": "eslint src/frontend/js --fix"

@@ -20,5 +20,12 @@ export default {
     })
 
     return data
+  },
+  async getLaunches(limit) {
+    const data = await getRequest('launches',{
+      limit
+    })
+
+    return data
   }
 }

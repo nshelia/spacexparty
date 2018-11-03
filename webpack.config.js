@@ -6,7 +6,7 @@ const webpack = require('webpack')
 const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
 
 module.exports = {
-  mode: 'development',
+  mode: "none",
   entry: {
     index: "./src/frontend/js/entry"
   },
@@ -82,5 +82,10 @@ module.exports = {
  			 title: 'Loading...',
       filename: 'index.html'
  		}),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
   ],
 }
