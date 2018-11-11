@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
 
@@ -78,6 +79,7 @@ module.exports = {
     }
   },
   plugins: [
+    new Dotenv(),
  		new HtmlWebpackPlugin({
  			 title: 'Loading...',
       filename: 'index.html'
