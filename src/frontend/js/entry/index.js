@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom'
 import "@babel/polyfill";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { Application } from 'components/Application'
+import { Application } from 'modules/Application'
 import configureStore from 'store';
 import 'main.scss'
-
 
 const store = configureStore()
 

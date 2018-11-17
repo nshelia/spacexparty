@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { routerReducer } from 'react-router-redux'
 
-const CONTEXT = require.context('../components', true, /\.\/(.*)\/index.js?$/i);
+const CONTEXT = require.context('../modules', true, /\.\/(.*)\/index.js?$/i);
 
 const lowerCaseFirstLetter = (string) => string.charAt(0).toLowerCase() + string.slice(1)
 
