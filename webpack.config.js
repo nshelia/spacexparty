@@ -1,45 +1,51 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 
+const isDev = process.env.NODE_ENV !== 'production'
 const mainPath = (dir) => path.resolve(__dirname + '/src/frontend/' + dir) 
 
 module.exports = {
-  mode: "none",
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false,
+        uglifyOptions: {
+          output: {
+            comments: false
+          }
+        }
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
   entry: {
     index: "./src/frontend/js/entry"
   },
   output: {
     path: path.resolve(__dirname, "build"), 
     filename: "[name].bundle.js",
-    chunkFilename: "[name].bundle.js",
+    chunkFilename: "[name]-[chunkhash].chunk.js",
     publicPath: '/', 
   },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          output: {
-            comments: false
-          }
-        }
-      })
-    ]
-  },
   resolve: {
-		modules: [
-		  "node_modules",
-		  mainPath("src"),
-		  mainPath("js"),
-		  mainPath("sass"),
+    modules: [
+      "node_modules",
+      mainPath("src"),
+      mainPath("js"),
+      mainPath("sass"),
       mainPath("imgs"),
-		],
-		extensions: [".js"],
-	},
-	module: {
-		rules: [
+    ],
+    extensions: [".js"],
+  },
+  module: {
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -47,27 +53,37 @@ module.exports = {
           loader: "babel-loader"
         }
       },
-			{
-        test: /\.scss$/,
-        use: [
-            "style-loader", 
-            "css-loader",
-            "postcss-loader?sourceMap", 
-            "resolve-url-loader",
-            "sass-loader?sourceMap",
-            "import-glob-loader"
-        ]
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
       },
       {
-        test: /\.(png|jpg|gif|svg)$/i,
+        test: /\.scss$/,
         use: [
-          {
-            loader: 'url-loader',
-          }
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader?sourceMap',
+          'resolve-url-loader',
+          'sass-loader?sourceMap',
+          'import-glob-loader'
         ]
       }
-		]
-	},
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Loading...',
+      filename: 'index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: isDev ? '[name].css' : '[name].[hash].css',
+      chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
+    }),
+    new Dotenv(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
+  ],
   devServer: {
     port: 3000,
     open: true,
@@ -78,16 +94,6 @@ module.exports = {
         "/api": "http://localhost:8080"
     }
   },
-  plugins: [
-    new Dotenv(),
- 		new HtmlWebpackPlugin({
- 			 title: 'Loading...',
-      filename: 'index.html'
- 		}),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
-    })
-  ],
+  devtool: false
 }
+

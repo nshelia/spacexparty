@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Launch } from 'modules/Launch'
-import LaunchPlaceholder from 'modules/Placeholders/Launch'
+import { LaunchPlaceholder } from 'modules/Placeholders'
+import { BoxBlockHeader } from 'shared/styled/Box'
 
 class RecentLaunches extends React.Component {
   static defaultProps = {
@@ -30,11 +31,11 @@ class RecentLaunches extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="box block-header">
+        <BoxBlockHeader>
 
 
           Recent launches
-        </div>
+        </BoxBlockHeader>
         {this.renderList()}
       </React.Fragment>
     )

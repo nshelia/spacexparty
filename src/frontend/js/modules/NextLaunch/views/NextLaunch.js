@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Countdown from 'react-countdown-now';
-
+import { BoxBlockHeader } from 'shared/styled/Box'
+import { StyledNextLaunchBox, StyledNextLaunchCountdown, StyledCountdown } from '../styled'
 class NextLaunch extends React.PureComponent {
   constructor() {
     super()
@@ -21,11 +22,11 @@ class NextLaunch extends React.PureComponent {
       return 'You can watch live here'
     }
 
-    return <span className="countdown">
+    return <StyledCountdown>
       {hours}:
       {minutes}:
       {seconds}
-    </span>;
+    </StyledCountdown>;
 
   }
 
@@ -49,16 +50,14 @@ class NextLaunch extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className="box block-header">
-
-
+        <BoxBlockHeader>
           Upcoming launch
-        </div>
-        <div className="box next-launch fade-ready">
-          <div className="next-launch-countdown box box-inner fade-ready">
+        </BoxBlockHeader>
+        <StyledNextLaunchBox className="d-flex flex-column justify-content-between">
+          <StyledNextLaunchCountdown className="d-flex align-items-center justify-content-center">
             {this.renderCountdown()}
-          </div>
-        </div>
+          </StyledNextLaunchCountdown>
+        </StyledNextLaunchBox>
       </React.Fragment>
     )
   }

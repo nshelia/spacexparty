@@ -1,15 +1,15 @@
 import React from 'react'
-import _ from 'lodash'
 import PropTypes from 'prop-types'
+import { StyledLaunch, StyledLaunchImage, StyledLaunchDetails } from '../styled'
 
 export default class Launch extends React.PureComponent {
   renderLaunchImage() {
     const { item } = this.props
 
     if (item.links) {
-      return <div className="launch-image" >
+      return <StyledLaunchImage className="d-flex align-items-center justify-content-center">
         <img src={item.links.mission_patch} alt={item.mission_name} />
-      </div>
+      </StyledLaunchImage>
     }
 
     return null
@@ -26,21 +26,17 @@ export default class Launch extends React.PureComponent {
 
   render() {
     const { item } = this.props
-    const style = { boxShadow: `0px 3px 0px rgba(${_.random(5,45)},39,43)` }
 
     return (
-      <div
-        className="launch fade-ready"
-        style={style}
-      >
+      <StyledLaunch className="d-flex">
         {this.renderLaunchImage()}
-        <div className="launch-details">
+        <StyledLaunchDetails className="flex-grow-1 d-flex align-items-center justify-content-center flex-column">
           <h3>
             {item.mission_name}
           </h3>
           {this.renderLaunchDetails()}
-        </div>
-      </div>
+        </StyledLaunchDetails>
+      </StyledLaunch>
     )
   }
 }
