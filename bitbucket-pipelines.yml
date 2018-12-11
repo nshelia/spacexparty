@@ -13,5 +13,4 @@ pipelines:
           - npm --version
           - npm install
           - npm run build
-          - npm test
-          - git push -f https://heroku:9af94079-322a-443b-a068-d33168256f76@git.heroku.com/spacexcalendar-v2.git HEAD
+          - git push -f https://heroku:5e87b04f-9e94-4c70-857f-3dca03afc35d@git.heroku.com/spacexcalendar-v2.git HEAD
