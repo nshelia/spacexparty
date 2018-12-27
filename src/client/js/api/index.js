@@ -7,8 +7,9 @@ export default {
     return data;
   },
   async getRecentLaunches(limit) {
-    const data = await getRequest("launches", {
-      limit
+    const data = await getRequest("launches/past", {
+      limit,
+      order: "desc"
     });
 
     return data;
