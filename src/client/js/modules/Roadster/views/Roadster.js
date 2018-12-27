@@ -1,18 +1,35 @@
 import React from "react";
 import { Row, Col } from "styled-bootstrap-grid";
 import { FadeReady } from "shared/styled/FadeReady";
-import { StyledRoadsterImages } from "../styled";
+import { StyledRoadsterImages, StyledRoadsterOverlay, StyledFadedImage } from "../styled";
 import PropTypes from "prop-types";
 
+
 class Roadster extends React.Component {
+  state = {
+    imageLoaded: false
+  }
   renderImages() {
     if (this.props.isFetched) {
-      return this.props.roadster.flickr_images.map((src, index) => {
-        return <img src={src} key={index} />;
+      return this.props.roadster.flickr_images.slice(0,1).map((src, index) => {
+        return (
+          <StyledFadedImage key={index} imageLoaded={this.state.imageLoaded} onLoad={() => this.setState({imageLoaded: true})} src={src}/>
+        );
       });
     }
 
     return null;
+  }
+
+  renderDetails() {
+    if (this.props.isFetched) {
+      return (
+        <React.Fragment>
+          <h4>{this.props.roadster.name}</h4>
+          <p>{this.props.roadster.details}</p>
+        </React.Fragment>
+      )
+    }
   }
 
   render() {
@@ -20,7 +37,12 @@ class Roadster extends React.Component {
       <FadeReady>
         <Row>
           <Col col={8}>
-            <StyledRoadsterImages>{this.renderImages()}</StyledRoadsterImages>
+            <StyledRoadsterImages>
+              {this.renderImages()}
+              <StyledRoadsterOverlay>
+                {this.renderDetails()}
+              </StyledRoadsterOverlay>
+            </StyledRoadsterImages>
           </Col>
         </Row>
       </FadeReady>
@@ -31,6 +53,8 @@ class Roadster extends React.Component {
 Roadster.propTypes = {
   isFetched: PropTypes.bool.isRequired,
   roadster: PropTypes.PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    details: PropTypes.string.isRequired,
     flickr_images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   })
 };

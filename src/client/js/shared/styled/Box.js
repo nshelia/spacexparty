@@ -15,3 +15,12 @@ export const BoxBlockHeader = styled(Box)`
   margin-bottom: 10px;
   font-weight: bold;
 `;
+
+export const StyledOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+`
