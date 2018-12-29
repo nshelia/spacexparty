@@ -3,7 +3,7 @@ import { Row, Col } from "styled-bootstrap-grid";
 import { FadeReady } from "shared/styled/FadeReady";
 import { StyledRoadsterImages, StyledRoadsterOverlay, StyledFadedImage } from "../styled";
 import PropTypes from "prop-types";
-
+import { Helmet } from 'react-helmet'
 
 class Roadster extends React.Component {
   state = {
@@ -35,6 +35,9 @@ class Roadster extends React.Component {
   render() {
     return (
       <FadeReady>
+        <Helmet>
+            <title>Roadster</title>
+        </Helmet>
         <Row>
           <Col col={8}>
             <StyledRoadsterImages>

@@ -15,6 +15,7 @@ import theme from "shared/theme";
 import { Frontload, frontloadServerRender } from "react-frontload";
 import Loadable from "react-loadable";
 import compression from "compression";
+import { Helmet } from 'react-helmet'
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -26,14 +27,14 @@ app.use("/static", express.static("build"));
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.get("/*", (req, res) => {
-  const injectHTML = (data, { body, styleTags, bundles, state }) => {
+  const injectHTML = (data, { helmet, body, styleTags, bundles, state }) => {
     const scripts = bundles.
       map((bundle) => {
         return `<script src="${bundle.publicPath}"></script>`;
       }).
       join("\n");
 
-    data = data.replace("</head>", `${styleTags}</head>`);
+    data = data.replace("</head>", `${helmet.title.toString()}${styleTags}</head>`);
     data = data.replace(
       "<main></main>",
       `<main>${body}</main><script>window.__PRELOADED_STATE__ = ${state}</script>${scripts}`
@@ -79,6 +80,7 @@ app.get("/*", (req, res) => {
 
       return renderToString(<App />);
     }).then((routeMarkup) => {
+      const helmet = Helmet.renderStatic();
       const styleTags = sheet.getStyleTags();
 
       if (context.status === 404) {
@@ -96,6 +98,7 @@ app.get("/*", (req, res) => {
       const bundles = getBundles(stats, modules);
 
       const html = injectHTML(htmlData, {
+        helmet,
         body: routeMarkup,
         styleTags,
         bundles,
