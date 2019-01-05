@@ -9,8 +9,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <FadeReady>
-       <Helmet>
-            <title>Home</title>
+        <Helmet>
+          <title>Home</title>
         </Helmet>
         <Row>
           <Col col={8}>

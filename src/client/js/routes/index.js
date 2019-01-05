@@ -34,12 +34,12 @@ const Missions = Loadable({
   }
 });
 
-const Roadster = Loadable({
-  loader: () => import(/* webpackChunkName: "Roadster" */ "modules/Roadster"),
+const Vehicles = Loadable({
+  loader: () => import(/* webpackChunkName: "Vehicles" */ "modules/Vehicles"),
   loading: MainLoader,
   delay: 300,
   render(loaded, props) {
-    const Component = loaded.Roadster;
+    const Component = loaded.Vehicles;
 
     return <Component {...props} />;
   }
@@ -60,8 +60,8 @@ export const routes = [
     component: Launches
   },
   {
-    path: "/roadster",
-    component: Roadster
+    path: "/vehicles",
+    component: Vehicles
   },
   {
     component: NotFound

@@ -9,7 +9,7 @@ export default class Launches extends React.Component {
     return (
       <FadeReady>
         <Helmet>
-            <title>Launches</title>
+          <title>Launches</title>
         </Helmet>
         <Row>
           <Col col={8}>

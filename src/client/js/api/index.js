@@ -1,6 +1,7 @@
 import { getRequest } from "./request";
 
-export default {
+const api = {
+  name: 'hello',
   async getNextLaunch() {
     const data = await getRequest("launches/next");
 
@@ -33,5 +34,32 @@ export default {
     const data = await getRequest("roadster");
 
     return data;
+  },
+  async getRockets(limit) {
+    const data = await getRequest("rockets",{
+      limit
+    });
+
+    return data;
+  },
+  async getShips(limit) {
+    const data = await getRequest("ships",{
+      limit
+    });
+
+    return data;
+  },
+  async getVehicles() {
+    const { data: roadster } = await getRequest("roadster");
+    const { data: rockets } = await getRequest("rockets");
+    const { data: ships } = await getRequest("ships");
+
+    return {
+      roadster,
+      rockets,
+      ships
+    }
   }
-};
+}
+
+export default api

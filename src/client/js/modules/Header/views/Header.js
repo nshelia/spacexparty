@@ -28,8 +28,8 @@ export default class Header extends React.Component {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="current" to="/roadster">
-              Roadster
+            <NavLink activeClassName="current" to="/vehicles">
+              Vehicles
             </NavLink>
           </li>
         </StyledUl>
