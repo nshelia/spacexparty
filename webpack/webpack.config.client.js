@@ -7,11 +7,12 @@ const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const reactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
+const OfflinePlugin = require('offline-plugin');
 
 const isDev = process.env.NODE_ENV !== 'production'
 const mainPath = (dir) => path.resolve(__dirname + '/../src/client/' + dir) 
 
-const plugins = [
+let plugins = [
   new HtmlWebpackPlugin({
     title: 'Loading...',
     filename: 'index.html',
@@ -29,14 +30,15 @@ const plugins = [
 ]
 
 if (!isDev) {
-  plugins.push(
+  plugins = [...plugins,
     new CleanWebpackPlugin(["build"],{ root:  path.resolve(__dirname, "../")}),
-  )
-  plugins.push(
-    new reactLoadablePlugin({
-      filename: path.resolve(__dirname, "../build/react-loadable.json")
-    })
-  )
+    new reactLoadablePlugin({filename: path.resolve(__dirname, "../build/react-loadable.json")}),
+    new OfflinePlugin({
+      ServiceWorker: {
+        events: true
+      }
+    }),
+  ]
 }
 
 module.exports = {
