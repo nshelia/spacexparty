@@ -3,9 +3,23 @@ const path = require('path');
 const mainPath = (dir) => path.resolve(__dirname + '/../src/client/' + dir) 
 const Dotenv = require('dotenv-webpack')
 const isDev = process.env.NODE_ENV !== 'production'
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel:true,
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
+      })
+    ]
+  },
   target: 'node',
   externals: [nodeExternals()],
   entry: './src/server/server.js',

@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -41,15 +41,16 @@ if (!isDev) {
   ]
 }
 
+
+console.log(process.env.NODE_ENV)
 module.exports = {
   mode: isDev ? 'development' : 'production',
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
+      new TerserPlugin({
         cache: true,
-        parallel: true,
-        sourceMap: false,
-        uglifyOptions: {
+        parallel:true,
+        terserOptions: {
           output: {
             comments: false
           }
@@ -64,6 +65,7 @@ module.exports = {
       })
     ]
   },
+  "target": "web",
   entry: {
     index: "./src/client/js/entry"
   },
