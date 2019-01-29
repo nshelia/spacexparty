@@ -2,11 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Launch } from "modules/Launch";
 import { LaunchPlaceholder } from "modules/Placeholders";
-import { BoxBlockHeader } from "shared/styled/Box";
+import { Link } from 'react-router-dom'
+import {
+  BoxBlockHeader,
+  BoxBlockHeaderButton,
+  BoxBlockHeaderText 
+} from "shared/styled/Box";
 
 class RecentLaunches extends React.Component {
   static defaultProps = {
-    limit: 10
+    limit: 3
   };
 
   renderList() {
@@ -20,7 +25,16 @@ class RecentLaunches extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <BoxBlockHeader>Recent launches</BoxBlockHeader>
+        <BoxBlockHeader withButton>
+          <BoxBlockHeaderText>
+            Recent launches
+          </BoxBlockHeaderText>
+          <BoxBlockHeaderButton>
+            <Link to="/launches">
+              See more
+            </Link>
+          </BoxBlockHeaderButton>
+        </BoxBlockHeader>
         {this.renderList()}
       </React.Fragment>
     );

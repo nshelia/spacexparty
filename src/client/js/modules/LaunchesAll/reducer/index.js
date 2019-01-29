@@ -30,7 +30,7 @@ const reducerMap = {
           isFetching: true,
           isFailed: false
         },
-        Cmd.run(api.getLaunches, {
+        Cmd.run(api.getRecentLaunches, {
           successActionCreator: fetchLaunchesSuccessAction,
           failActionCreator: fetchLaunchesFailureAction,
           args: [payload]

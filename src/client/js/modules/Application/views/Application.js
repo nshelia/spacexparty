@@ -18,6 +18,10 @@ const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.white} !important;
     overflow-y: scroll !important;
   }
+  a {
+    color: inherit;
+    text-decoration:none;
+  }
 `;
 
 class Application extends React.Component {

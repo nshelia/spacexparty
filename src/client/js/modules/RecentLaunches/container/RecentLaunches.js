@@ -13,7 +13,7 @@ const mapDispatchToProps = {
 };
 
 const frontload = (props) => {
-  return props.fetchRecentLaunchesRequestAction(3);
+  return props.fetchRecentLaunchesRequestAction(2);
 };
 
 const options = {
