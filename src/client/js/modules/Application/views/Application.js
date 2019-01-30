@@ -5,6 +5,8 @@ import { hot } from "react-hot-loader";
 import { routes } from "routes";
 import { BaseCSS, Container } from "styled-bootstrap-grid";
 import { createGlobalStyle } from "styled-components";
+import { Row, Col } from "styled-bootstrap-grid";
+import { Favorites } from 'modules/Favorites'
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -29,18 +31,25 @@ class Application extends React.Component {
     return (
       <Container>
         <Header />
-        <Switch>
-          {routes.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                exact={route.exact}
-                path={route.path}
-                component={route.component}
-              />
-            );
-          })}
-        </Switch>
+        <Row>
+          <Col col={8}>
+            <Switch>
+              {routes.map((route, index) => {
+                return (
+                  <Route
+                    key={index}
+                    exact={route.exact}
+                    path={route.path}
+                    component={route.component}
+                  />
+                );
+              })}
+            </Switch>
+          </Col>
+          <Col col={4}>
+            <Favorites/>
+          </Col>
+        </Row>
         <BaseCSS />
         <GlobalStyles />
       </Container>

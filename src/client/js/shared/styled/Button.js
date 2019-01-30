@@ -4,8 +4,9 @@ export const StyledButton = styled.button`
   border:none;
   font-weight:bold;
   border-radius:3px;
-  background: ${props => props.theme.navigatorButtonBgColor}
-  color: ${props => props.theme.navigatorButtonColor}
-  padding:15px;
+  background: ${props => props.theme.blue}
+  color: ${props => props.theme.white}
+  padding: ${props => "10px"};
   outline:none;
+  cursor:pointer;
 `;

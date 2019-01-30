@@ -11,7 +11,15 @@ class MissionsAll extends React.Component {
 
   renderList() {
     if (this.props.isFetched) {
-      return this.props.data.map((item, index) => <Launch key={index} item={item} />);
+      return this.props.data.map((item, index) => {
+        return (
+          <Launch 
+            title={item.mission_name}
+            details={item.description}
+            key={index} 
+          />
+        )
+      });
     }
 
     return <LaunchPlaceholder count={this.props.limit} />;

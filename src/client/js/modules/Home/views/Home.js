@@ -8,21 +8,13 @@ import { Helmet } from 'react-helmet'
 export default class Home extends React.Component {
   render() {
     return (
-      <FadeReady>
+      <React.Fragment>
         <Helmet>
           <title>Home</title>
         </Helmet>
-        <Row>
-          <Col col={8}>
-            <NextLaunch />
-          </Col>
-        </Row>
-        <Row>
-          <Col col={8}>
-            <RecentLaunches />
-          </Col>
-        </Row>
-      </FadeReady>
+        <NextLaunch />
+        <RecentLaunches/>
+      </React.Fragment>
     );
   }
 }

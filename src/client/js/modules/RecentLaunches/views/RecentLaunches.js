@@ -6,17 +6,26 @@ import { Link } from 'react-router-dom'
 import {
   BoxBlockHeader,
   BoxBlockHeaderButton,
-  BoxBlockHeaderText 
+  BoxBlockHeaderText
 } from "shared/styled/Box";
 
 class RecentLaunches extends React.Component {
   static defaultProps = {
-    limit: 3
+    limit: 2
   };
 
   renderList() {
     if (this.props.isFetched) {
-      return this.props.data.map((item, index) => <Launch key={index} item={item} />);
+      return this.props.data.map((item, index) => {
+        return (
+          <Launch
+            image={item.links.mission_patch_small}
+            title={item.mission_name}
+            details={item.details}
+            key={index}
+          />
+        )
+      });
     }
 
     return <LaunchPlaceholder count={this.props.limit} />;
@@ -29,11 +38,11 @@ class RecentLaunches extends React.Component {
           <BoxBlockHeaderText>
             Recent launches
           </BoxBlockHeaderText>
-          <BoxBlockHeaderButton>
-            <Link to="/launches">
-              See more
-            </Link>
-          </BoxBlockHeaderButton>
+          <Link to="/launches">
+            <BoxBlockHeaderButton>
+                See more
+            </BoxBlockHeaderButton>
+          </Link>
         </BoxBlockHeader>
         {this.renderList()}
       </React.Fragment>

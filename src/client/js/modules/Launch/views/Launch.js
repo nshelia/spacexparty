@@ -8,12 +8,12 @@ import {
 
 export default class Launch extends React.PureComponent {
   renderLaunchImage() {
-    const { item } = this.props;
+    const { image, title } = this.props;
 
-    if (item.links && item.links.mission_patch_small) {
+    if (image) {
       return (
         <StyledLaunchImage>
-          <img src={item.links.mission_patch_small} alt={item.mission_name} />
+          <img src={image} alt={title} />
         </StyledLaunchImage>
       );
     }
@@ -22,20 +22,19 @@ export default class Launch extends React.PureComponent {
   }
 
   renderLaunchDetails() {
-    const { item } = this.props;
-    const details = item.details || item.description;
+    const { details } = this.props;
 
     return <p>{details}</p>;
   }
 
   render() {
-    const { item } = this.props;
+    const { title } = this.props;
 
     return (
       <StyledLaunch>
         {this.renderLaunchImage()}
         <StyledLaunchDetails>
-          <h3>{item.mission_name}</h3>
+          <h3>{title}</h3>
           {this.renderLaunchDetails()}
         </StyledLaunchDetails>
       </StyledLaunch>
@@ -44,8 +43,7 @@ export default class Launch extends React.PureComponent {
 }
 
 Launch.propTypes = {
-  item: PropTypes.shape({
-    mission_name: PropTypes.string.isRequired,
-    links: PropTypes.shape({ mission_patch_small: PropTypes.string })
-  })
+  image: PropTypes.image,
+  title: PropTypes.string.isRequired,
+  details: PropTypes.string.isRequired
 };

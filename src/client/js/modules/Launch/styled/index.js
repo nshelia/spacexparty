@@ -16,9 +16,10 @@ export const StyledLaunchImage = styled.div`
   justify-content: center;
 
   img {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
+    border-radius:5px;
   }
 `;
 export const StyledLaunchDetails = styled.div`

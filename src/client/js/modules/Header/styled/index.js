@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Falcon9 from "falcon9.jpg";
+import { NavLink } from "shared/styled/NavLink";
 
 export const StyledHeader = styled.header`
   background: url(${Falcon9});
@@ -14,3 +15,7 @@ export const StyledUl = styled.ul`
 
   a { text-decoration: none; }
 `;
+
+export const StyledTab = styled(NavLink)`
+	border-radius:3px;
+`

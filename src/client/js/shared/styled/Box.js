@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { StyledButton } from './Button'
 
 export const Box = styled.div`
@@ -23,10 +23,14 @@ export const BoxBlockHeader = styled(Box)`
 
 
 export const BoxBlockHeaderButton = styled(StyledButton)`
- 
+  background: ${props => props.theme.navigatorButtonBgColor }
+  color: ${props => props.theme.navigatorButtonColor }
+  padding: ${props =>  props.theme.navigatorButtonPadding};
 `
 export const BoxBlockHeaderText = styled.span`
-  
+  ${props => props.red && css`
+    color: ${props.theme.red}
+  `}
 `
 
 export const StyledOverlay = styled.div`

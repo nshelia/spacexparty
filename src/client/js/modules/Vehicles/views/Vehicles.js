@@ -1,17 +1,21 @@
 import React from "react";
-import { Row, Col } from "styled-bootstrap-grid";
-import { Vehicle } from 'modules/Vehicle'
-import { FadeReady } from "shared/styled/FadeReady";
+import { Launch } from 'modules/Launch'
 import PropTypes from "prop-types";
 import { Helmet } from 'react-helmet'
 import { BoxBlockHeader } from "shared/styled/Box";
+import { LaunchPlaceholder } from "modules/Placeholders";
 
 class Vehicles extends React.Component {
   renderShips() {
     if (this.props.isFetched) {
       return this.props.ships.map((item,index) => {
         return (
-          <Vehicle type="ship" item={item} key={index}/>
+          <Launch
+            title={item.ship_name}
+            details={item.home_port}
+            image={item.image}
+            key={index}
+          />
         )
       })
     }
@@ -21,7 +25,12 @@ class Vehicles extends React.Component {
     if (this.props.isFetched) {
       return this.props.rockets.reverse().map((item,index) => {
         return (
-          <Vehicle type="rocket" item={item} key={index}/>
+          <Launch
+            title={item.rocket_name}
+            details={item.description}
+            image={item.flickr_images[0]}
+            key={index}
+          />
         )
       })
     }
@@ -29,25 +38,35 @@ class Vehicles extends React.Component {
 
   renderRoadster() {
     if (this.props.isFetched) {
-      return <Vehicle type="roadster" item={this.props.roadster} />
+      const { roadster: item } = this.props
+
+
+      return (
+        <Launch
+          title={item.name}
+          details={item.details}
+          image={item.flickr_images[0]}
+        />
+      )
     }
   }
-
+  renderPlaceholders() {
+    if (!this.props.isFetched) {
+      return <LaunchPlaceholder count={10} />;
+    }
+  }
   render() {
     return (
-      <FadeReady>
+      <React.Fragment>
         <Helmet>
           <title>Vehicles</title>
         </Helmet>
-        <Row>
-          <Col col={8}>
-            <BoxBlockHeader>Vehicles</BoxBlockHeader>
-          </Col>
-          {this.renderRoadster()}
-          {this.renderRockets()}
-          {this.renderShips()}
-        </Row>
-      </FadeReady>
+        <BoxBlockHeader>Vehicles</BoxBlockHeader>
+        {this.renderPlaceholders()}
+        {this.renderRoadster()}
+        {this.renderRockets()}
+        {this.renderShips()}
+      </React.Fragment>
     );
   }
 }

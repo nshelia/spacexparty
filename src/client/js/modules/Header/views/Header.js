@@ -1,6 +1,5 @@
 import React from "react";
-import { StyledHeader, StyledUl } from "../styled";
-import { NavLink } from "shared/styled/NavLink";
+import { StyledHeader, StyledUl, StyledTab } from "../styled";
 
 export default class Header extends React.Component {
   render() {
@@ -13,24 +12,24 @@ export default class Header extends React.Component {
         </p>
         <StyledUl>
           <li>
-            <NavLink activeClassName="current" exact to="/">
-              Home
-            </NavLink>
+            <StyledTab activeClassName="current" exact to="/">
+              Home             
+            </StyledTab>
           </li>
           <li>
-            <NavLink activeClassName="current" to="/missions">
+            <StyledTab activeClassName="current" to="/missions">
               Missions
-            </NavLink>
+            </StyledTab>
           </li>
           <li>
-            <NavLink activeClassName="current" to="/launches">
+            <StyledTab activeClassName="current" to="/launches">
               Launches
-            </NavLink>
+            </StyledTab>
           </li>
           <li>
-            <NavLink activeClassName="current" to="/vehicles">
+            <StyledTab activeClassName="current" to="/vehicles">
               Vehicles
-            </NavLink>
+            </StyledTab>
           </li>
         </StyledUl>
       </StyledHeader>
