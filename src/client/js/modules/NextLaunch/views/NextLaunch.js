@@ -47,7 +47,7 @@ class NextLaunch extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <BoxBlockHeader>Upcoming launch</BoxBlockHeader>
+        <BoxBlockHeader>Upcoming launch countdown</BoxBlockHeader>
         <StyledNextLaunchBox>
           <StyledNextLaunchCountdown>
             {this.renderCountdown()}

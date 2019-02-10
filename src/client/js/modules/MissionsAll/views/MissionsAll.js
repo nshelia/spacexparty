@@ -1,35 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Launch } from "modules/Launch";
-import { LaunchPlaceholder } from "modules/Placeholders";
+import { Carousel } from "modules/Carousel";
 import { BoxBlockHeader } from "shared/styled/Box";
+import { Loader } from "shared/styled/Loader";
 
 class MissionsAll extends React.Component {
-  static defaultProps = {
-    limit: 10
-  };
-
-  renderList() {
+  renderCarousels() {
     if (this.props.isFetched) {
-      return this.props.data.map((item, index) => {
+      return this.props.data.map((item,index) => {
         return (
-          <Launch 
+          <Carousel
+            key={index}
+            items={item.payload_ids}
             title={item.mission_name}
-            details={item.description}
-            key={index} 
           />
         )
-      });
+      })
     }
 
-    return <LaunchPlaceholder count={this.props.limit} />;
+    return <Loader top={200} />;
+
   }
 
   render() {
     return (
       <React.Fragment>
         <BoxBlockHeader>Missions</BoxBlockHeader>
-        {this.renderList()}
+        {this.renderCarousels()}
       </React.Fragment>
     );
   }

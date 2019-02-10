@@ -50,11 +50,13 @@ class Vehicles extends React.Component {
       )
     }
   }
+
   renderPlaceholders() {
     if (!this.props.isFetched) {
       return <LaunchPlaceholder count={10} />;
     }
   }
+
   render() {
     return (
       <React.Fragment>

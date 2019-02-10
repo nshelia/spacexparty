@@ -13,17 +13,17 @@ export default class Header extends React.Component {
         <StyledUl>
           <li>
             <StyledTab activeClassName="current" exact to="/">
-              Home             
-            </StyledTab>
-          </li>
-          <li>
-            <StyledTab activeClassName="current" to="/missions">
-              Missions
+              Home
             </StyledTab>
           </li>
           <li>
             <StyledTab activeClassName="current" to="/launches">
               Launches
+            </StyledTab>
+          </li>
+          <li>
+            <StyledTab activeClassName="current" to="/missions">
+              Missions
             </StyledTab>
           </li>
           <li>

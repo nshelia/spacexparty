@@ -7,7 +7,7 @@ export const Loader = styled.div`
   background: url(${Spinner}) no-repeat;
   background-size: 50px 50px;
   position: absolute;
-  top: 50%;
+  top: ${(props) => props.top ? `${props.top}px` : '50%'};
   left: 50%;
   transform: translate(-50%, -50%);
 `;

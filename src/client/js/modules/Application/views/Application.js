@@ -3,9 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import { Header } from "modules/Header";
 import { hot } from "react-hot-loader";
 import { routes } from "routes";
-import { BaseCSS, Container } from "styled-bootstrap-grid";
+import { BaseCSS, Container,Row, Col } from "styled-bootstrap-grid";
 import { createGlobalStyle } from "styled-components";
-import { Row, Col } from "styled-bootstrap-grid";
 import { Favorites } from 'modules/Favorites'
 
 const GlobalStyles = createGlobalStyle`

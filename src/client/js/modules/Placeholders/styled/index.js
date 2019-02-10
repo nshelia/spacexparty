@@ -32,3 +32,4 @@ export const StyledLaunchPlaceholderDetails = styled.div`
 
   p { text-align: center; }
 `;
+

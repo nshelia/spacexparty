@@ -12,12 +12,12 @@ class LaunchesAll extends React.Component {
   renderList() {
     if (this.props.isFetched) {
       return this.props.data.map((item, index) => {
-        return ( 
-          <Launch 
-            title={item.mission_name} 
-            details={item.details} 
-            image={item.links.mission_patch_small} 
-            key={index} 
+        return (
+          <Launch
+            title={item.mission_name}
+            details={item.details}
+            image={item.links.mission_patch_small}
+            key={index}
           />
         )
       })

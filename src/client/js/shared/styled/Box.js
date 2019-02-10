@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 import { StyledButton } from './Button'
 
 export const Box = styled.div`
@@ -18,17 +18,17 @@ export const BoxBlockHeader = styled(Box)`
   font-weight: bold;
   justify-content:space-between;
   align-items:center;
-  padding:${props => props.withButton ? '0 0 0 10px' : '10px' };
+  padding:${(props) => props.withButton ? '0 0 0 10px' : '10px'};
 `;
 
 
 export const BoxBlockHeaderButton = styled(StyledButton)`
-  background: ${props => props.theme.navigatorButtonBgColor }
-  color: ${props => props.theme.navigatorButtonColor }
-  padding: ${props =>  props.theme.navigatorButtonPadding};
+  background: ${(props) => props.theme.navigatorButtonBgColor}
+  color: ${(props) => props.theme.navigatorButtonColor}
+  padding: ${(props) => props.theme.navigatorButtonPadding};
 `
 export const BoxBlockHeaderText = styled.span`
-  ${props => props.red && css`
+  ${(props) => props.red && css`
     color: ${props.theme.red}
   `}
 `
