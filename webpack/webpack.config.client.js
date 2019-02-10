@@ -41,8 +41,6 @@ if (!isDev) {
   ]
 }
 
-
-console.log(process.env.NODE_ENV)
 module.exports = {
   mode: isDev ? 'development' : 'production',
   optimization: {

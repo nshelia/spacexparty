@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import {
   StyledLaunch,
@@ -6,9 +6,9 @@ import {
   StyledLaunchDetails
 } from "../styled";
 
-export default class Launch extends React.PureComponent {
-  renderLaunchImage() {
-    const { image, title } = this.props;
+export default React.memo(function Launch(props) {
+  const renderLaunchImage = () => {
+    const { image, title } = props;
 
     if (image) {
       return (
@@ -20,30 +20,19 @@ export default class Launch extends React.PureComponent {
 
     return null;
   }
-
-  renderLaunchDetails() {
-    const { details } = this.props;
+  const renderLaunchDetails = () => {
+    const { details } = props;
 
     return <p>{details}</p>;
   }
 
-  render() {
-    const { title } = this.props;
-
-    return (
-      <StyledLaunch>
-        {this.renderLaunchImage()}
-        <StyledLaunchDetails>
-          <h3>{title}</h3>
-          {this.renderLaunchDetails()}
-        </StyledLaunchDetails>
-      </StyledLaunch>
-    );
-  }
-}
-
-Launch.propTypes = {
-  image: PropTypes.image,
-  title: PropTypes.string.isRequired,
-  details: PropTypes.string.isRequired
-};
+  return (
+    <StyledLaunch>
+      {renderLaunchImage()}
+      <StyledLaunchDetails>
+        <h3>{props.title}</h3>
+        {renderLaunchDetails()}
+      </StyledLaunchDetails>
+    </StyledLaunch>
+  );
+})

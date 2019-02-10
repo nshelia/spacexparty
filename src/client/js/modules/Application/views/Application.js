@@ -25,34 +25,32 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-class Application extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Header />
-        <Row>
-          <Col col={8}>
-            <Switch>
-              {routes.map((route, index) => {
-                return (
-                  <Route
-                    key={index}
-                    exact={route.exact}
-                    path={route.path}
-                    component={route.component}
-                  />
-                );
-              })}
-            </Switch>
-          </Col>
-          <Col col={4}>
-            <Favorites/>
-          </Col>
-        </Row>
-        <BaseCSS />
-        <GlobalStyles />
-      </Container>
-    );
-  }
+function Application() {
+  return (
+    <Container>
+      <Header />
+      <Row>
+        <Col col={8}>
+          <Switch>
+            {routes.map((route, index) => {
+              return (
+                <Route
+                  key={index}
+                  exact={route.exact}
+                  path={route.path}
+                  component={route.component}
+                />
+              );
+            })}
+          </Switch>
+        </Col>
+        <Col col={4}>
+          <Favorites/>
+        </Col>
+      </Row>
+      <BaseCSS />
+      <GlobalStyles />
+    </Container>
+  );
 }
 export default hot(module)(Application);
