@@ -3,10 +3,15 @@ import PropTypes from "prop-types";
 import Countdown from "react-countdown-now";
 import { BoxBlockHeader } from "shared/styled/Box";
 import { Loader } from "shared/styled/Loader";
+import Reddit from 'shared/components/icons/Reddit'
+import NextLaunchDefault from 'nextlaunch.jpg'
+
 import {
   StyledNextLaunchBox,
   StyledNextLaunchCountdown,
-  StyledCountdown
+  StyledCountdown,
+  StyledNextLaunchDetails,
+  Label
 } from "../styled";
 
 class NextLaunch extends React.PureComponent {
@@ -44,14 +49,37 @@ class NextLaunch extends React.PureComponent {
     return <Loader />;
   }
 
+  renderDetails() {
+    if (this.props.isFetched) {
+      return (
+        <StyledNextLaunchDetails>
+          {this.props.details}
+        </StyledNextLaunchDetails>
+      )
+    }
+  }
+  renderRedditThreadLink() {
+     if (this.props.isFetched) {
+      return (
+        <Label>
+          <a href={this.props.redditCampaign}>Reddit Campaign</a>
+          <Reddit/>
+        </Label>
+      )
+     }
+  }
   render() {
     return (
       <React.Fragment>
-        <BoxBlockHeader>Upcoming launch countdown</BoxBlockHeader>
+        <BoxBlockHeader>
+          Upcoming launch countdown
+          {this.renderRedditThreadLink()}
+        </BoxBlockHeader>
         <StyledNextLaunchBox>
-          <StyledNextLaunchCountdown>
+          <StyledNextLaunchCountdown img={NextLaunchDefault}>
             {this.renderCountdown()}
           </StyledNextLaunchCountdown>
+            {this.renderDetails()}
         </StyledNextLaunchBox>
       </React.Fragment>
     );

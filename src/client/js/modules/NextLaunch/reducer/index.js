@@ -48,6 +48,8 @@ const reducerMap = {
       isFetched: true,
       isFetching: false,
       isFailed: false,
+      redditCampaign: launch.links.reddit_campaign,
+      details: launch.details || launch.description,
       rocket: launch.rocket,
       missionName: launch.mission_name,
       launchDateUTC: launch.launch_date_utc,

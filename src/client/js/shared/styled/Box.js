@@ -21,10 +21,17 @@ export const BoxBlockHeader = styled(Box)`
   padding:${(props) => props.withButton ? '0 0 0 10px' : '10px'};
 `;
 
+export const LightBox = styled(Box)`
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: ${(props) => props.theme.black};
+`
+
 
 export const BoxBlockHeaderButton = styled(StyledButton)`
-  background: ${(props) => props.theme.navigatorButtonBgColor}
-  color: ${(props) => props.theme.navigatorButtonColor}
+  background: ${(props) => props.theme.navigatorButtonBgColor};
+  color: ${(props) => props.theme.navigatorButtonColor};
   padding: ${(props) => props.theme.navigatorButtonPadding};
 `
 export const BoxBlockHeaderText = styled.span`

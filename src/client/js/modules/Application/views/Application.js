@@ -23,6 +23,11 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
     text-decoration:none;
   }
+
+  .svg-icon--reddit {
+    height: 24px;
+    width: 30px;
+  }
 `;
 
 function Application() {
