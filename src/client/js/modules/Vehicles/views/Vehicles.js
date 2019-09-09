@@ -6,9 +6,13 @@ import { BoxBlockHeader } from "shared/styled/Box";
 import { LaunchPlaceholder } from "modules/Placeholders";
 
 class Vehicles extends React.Component {
+  componentDidMount() {
+    return this.props.fetchVehiclesRequestAction();
+  }
+
   renderShips() {
     if (this.props.isFetched) {
-      return this.props.ships.map((item,index) => {
+      return this.props.ships.map((item, index) => {
         return (
           <Launch
             title={item.ship_name}
@@ -23,7 +27,7 @@ class Vehicles extends React.Component {
 
   renderRockets() {
     if (this.props.isFetched) {
-      return this.props.rockets.reverse().map((item,index) => {
+      return this.props.rockets.reverse().map((item, index) => {
         return (
           <Launch
             title={item.rocket_name}

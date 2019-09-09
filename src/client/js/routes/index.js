@@ -1,69 +1,49 @@
-import React from "react";
 import { NotFound } from "modules/NotFound";
-import { MainLoader } from "modules/MainLoader";
-import Loadable from "react-loadable";
+import loadable from '@loadable/component'
+import { fetchNextLaunchRequestAction } from 'modules/NextLaunch/actions'
+import { fetchRecentLaunchesRequestAction } from 'modules/RecentLaunches/actions'
+import { fetchMissionsRequestAction } from 'modules/MissionsAll/actions'
+import { fetchLaunchesRequestAction } from 'modules/LaunchesAll/actions'
+import { fetchVehiclesRequestAction } from 'modules/Vehicles/actions'
 
-const Home = Loadable({
-  loader: () => import(/* webpackChunkName: "Home" */ "modules/Home"),
-  loading: MainLoader,
-  delay: 300,
-  render(loaded, props) {
-    const Component = loaded.Home;
-
-    return <Component {...props} />;
-  }
-});
-const Launches = Loadable({
-  loader: () => import(/* webpackChunkName: "Launches" */ "modules/Launches"),
-  loading: MainLoader,
-  delay: 300,
-  render(loaded, props) {
-    const Component = loaded.Launches;
-
-    return <Component {...props} />;
-  }
-});
-const Missions = Loadable({
-  loader: () => import(/* webpackChunkName: "Missions" */ "modules/Missions"),
-  loading: MainLoader,
-  delay: 300,
-  render(loaded, props) {
-    const Component = loaded.Missions;
-
-    return <Component {...props} />;
-  }
-});
-
-const Vehicles = Loadable({
-  loader: () => import(/* webpackChunkName: "Vehicles" */ "modules/Vehicles"),
-  loading: MainLoader,
-  delay: 300,
-  render(loaded, props) {
-    const Component = loaded.Vehicles;
-
-    return <Component {...props} />;
-  }
-});
+const Home = loadable(() => import(/* webpackChunkName: "Home" */ "modules/Home/views/Home"))
+const Missions = loadable(() => import(/* webpackChunkName: "Missions" */ "modules/Missions/views/Missions"))
+const Vehicles = loadable(() => import(/* webpackChunkName: "Vehicles" */ "modules/Vehicles/container/Vehicles"))
+const Launches = loadable(() => import(/* webpackChunkName: "Launches" */ "modules/Launches/views/Launches"))
 
 export const routes = [
   {
     path: "/",
     exact: true,
-    component: Home
+    component: Home,
+    loadData: async (dispatch, req) => {
+      await dispatch(fetchNextLaunchRequestAction())
+      await dispatch(fetchRecentLaunchesRequestAction(2))
+    }
   },
   {
     path: "/missions",
-    component: Missions
+    component: Missions,
+    loadData: async (dispatch, req) => {
+      await dispatch(fetchMissionsRequestAction())
+    }
   },
   {
     path: "/launches",
-    component: Launches
+    component: Launches,
+    loadData: async (dispatch, req) => {
+      await dispatch(fetchLaunchesRequestAction())
+    }
   },
   {
     path: "/vehicles",
-    component: Vehicles
+    component: Vehicles,
+    loadData: async (dispatch, req) => {
+      await dispatch(fetchVehiclesRequestAction())
+    }
   },
   {
-    component: NotFound
+    component: NotFound,
+    isNotFound: true
   }
 ];

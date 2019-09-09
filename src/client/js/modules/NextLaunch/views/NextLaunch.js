@@ -20,6 +20,10 @@ class NextLaunch extends React.PureComponent {
     this.countdownRenderer = this.countdownRenderer.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchNextLaunchRequestAction()
+  }
+
   countdownRenderer({ hours, minutes, seconds, completed }) {
     if (completed) {
       return "You can watch live here";
@@ -58,16 +62,18 @@ class NextLaunch extends React.PureComponent {
       )
     }
   }
+
   renderRedditThreadLink() {
-     if (this.props.isFetched) {
+    if (this.props.isFetched) {
       return (
         <Label>
           <a href={this.props.redditCampaign}>Reddit Campaign</a>
-          <Reddit/>
+          <Reddit />
         </Label>
       )
-     }
+    }
   }
+
   render() {
     return (
       <React.Fragment>
@@ -79,7 +85,7 @@ class NextLaunch extends React.PureComponent {
           <StyledNextLaunchCountdown img={NextLaunchDefault}>
             {this.renderCountdown()}
           </StyledNextLaunchCountdown>
-            {this.renderDetails()}
+          {this.renderDetails()}
         </StyledNextLaunchBox>
       </React.Fragment>
     );

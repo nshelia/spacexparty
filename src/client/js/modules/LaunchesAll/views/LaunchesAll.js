@@ -9,11 +9,16 @@ class LaunchesAll extends React.Component {
     limit: 10
   };
 
+  componentDidMount() {
+    this.props.fetchLaunchesRequestAction()
+  }
+
   renderList() {
     if (this.props.isFetched) {
       return this.props.data.map((item, index) => {
         return (
           <Launch
+            url={item.links.video_link}
             title={item.mission_name}
             details={item.details}
             image={item.links.mission_patch_small}

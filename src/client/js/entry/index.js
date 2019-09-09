@@ -1,7 +1,7 @@
 import "@babel/polyfill";
 import "helpers/offline"
 import "helpers/notifications"
-
+import { loadableReady } from '@loadable/component'
 import React from "react";
 import { hydrate, render } from "react-dom";
 import { Provider } from "react-redux";
@@ -10,8 +10,6 @@ import createStore from "store";
 import { ThemeProvider } from "styled-components";
 import theme from "shared/theme";
 import { ConnectedRouter } from "connected-react-router";
-import { Frontload } from "react-frontload";
-import Loadable from "react-loadable";
 
 const { store, history } = createStore();
 
@@ -21,19 +19,17 @@ const App =
   <ThemeProvider theme={theme}>
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <Frontload noServerRender={true}>
-          <Application />
-        </Frontload>
+        <Application />
       </ConnectedRouter>
     </Provider>
   </ThemeProvider>
 
-;
+  ;
 
 if (root.hasChildNodes()) {
-  Loadable.preloadReady().then(() => {
-    hydrate(App, root);
-  });
+  loadableReady(() => {
+    hydrate(App, root)
+  })
 } else {
   render(App, root);
 }

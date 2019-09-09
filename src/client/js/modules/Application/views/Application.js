@@ -3,9 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import { Header } from "modules/Header";
 import { hot } from "react-hot-loader";
 import { routes } from "routes";
-import { BaseCSS, Container,Row, Col } from "styled-bootstrap-grid";
+import { BaseCSS, Container, Row, Col } from "styled-bootstrap-grid";
 import { createGlobalStyle } from "styled-components";
-import { Favorites } from 'modules/Favorites'
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -35,7 +34,7 @@ function Application() {
     <Container>
       <Header />
       <Row>
-        <Col col={8}>
+        <Col col={12}>
           <Switch>
             {routes.map((route, index) => {
               return (
@@ -48,9 +47,6 @@ function Application() {
               );
             })}
           </Switch>
-        </Col>
-        <Col col={4}>
-          <Favorites/>
         </Col>
       </Row>
       <BaseCSS />

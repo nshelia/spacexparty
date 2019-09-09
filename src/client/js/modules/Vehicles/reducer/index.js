@@ -22,6 +22,7 @@ const initialState = {
 
 const reducerMap = {
   [FETCH_VEHICLES_REQUEST]: (state) => {
+    console.log(state)
     if (state && (!state.isFetching && !state.isFetched && !state.isFailed)) {
       return loop(
         {

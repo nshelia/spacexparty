@@ -6,18 +6,18 @@ const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const reactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const OfflinePlugin = require('offline-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin')
 
 const isDev = process.env.NODE_ENV !== 'production'
-const mainPath = (dir) => path.resolve(__dirname + '/../src/client/' + dir) 
+const mainPath = (dir) => path.resolve(`${__dirname}/../src/client/${dir}`)
 
 let plugins = [
   new HtmlWebpackPlugin({
     title: 'Loading...',
     filename: 'index.html',
     template: './src/client/template/index.html',
-    inject:true
+    inject: isDev
   }),
   new MiniCssExtractPlugin({
     filename: isDev ? '[name].css' : '[name].[hash].css',
@@ -30,9 +30,10 @@ let plugins = [
 ]
 
 if (!isDev) {
-  plugins = [...plugins,
-    new CleanWebpackPlugin(["build"],{ root:  path.resolve(__dirname, "../")}),
-    new reactLoadablePlugin({filename: path.resolve(__dirname, "../build/react-loadable.json")}),
+  plugins = [
+    ...plugins,
+    new CleanWebpackPlugin(["build"], { root: path.resolve(__dirname, "../") }),
+    new LoadablePlugin(),
     new OfflinePlugin({
       ServiceWorker: {
         events: true
@@ -47,7 +48,7 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         cache: true,
-        parallel:true,
+        parallel: true,
         terserOptions: {
           output: {
             comments: false
@@ -55,9 +56,13 @@ module.exports = {
         }
       }),
       new OptimizeCSSAssetsPlugin({
+        // eslint-disable-next-line global-require
         cssProcessor: require('cssnano'),
         cssProcessorPluginOptions: {
-          preset: ['default', { discardComments: { removeAll: true } }],
+          preset: [
+            'default',
+            { discardComments: { removeAll: true } }
+          ],
         },
         canPrint: true
       })
@@ -68,10 +73,10 @@ module.exports = {
     index: "./src/client/js/entry"
   },
   output: {
-    path: path.resolve(__dirname, "../build"), 
+    path: path.resolve(__dirname, "../build"),
     filename: "[name].bundle.js",
     chunkFilename: "[name]-[chunkhash].chunk.js",
-    publicPath: '/static/', 
+    publicPath: isDev ? '/' : '/static/'
   },
   resolve: {
     modules: [
@@ -79,7 +84,10 @@ module.exports = {
       mainPath("js"),
       mainPath("imgs"),
     ],
-    extensions: [".js",".json"],
+    extensions: [
+      ".js",
+      ".json"
+    ],
   },
   module: {
     rules: [
@@ -112,14 +120,17 @@ module.exports = {
   },
   plugins,
   devServer: {
-    contentBase: path.resolve(__dirname, "../build"), 
+    contentBase: path.resolve(__dirname, "build"),
     port: 3000,
     open: true,
-    compress: true, 
-    https: false, 
-    historyApiFallback: true,
+    compress: true,
+    https: false,
+    historyApiFallback: {
+      disableDotRule: true
+    },
+
     proxy: {
-        "/api": "http://localhost:8080"
+      "/api": "http://localhost:8080"
     }
   },
   devtool: false

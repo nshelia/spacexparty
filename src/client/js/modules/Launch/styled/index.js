@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledButton } from 'shared/styled/Button'
 
 export const StyledLaunch = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ export const StyledLaunch = styled.div`
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 0 3px 0 rgba(31, 39, 43);
+  position:relative;
 `;
 export const StyledLaunchImage = styled.div`
   padding: 5px;
@@ -32,3 +34,12 @@ export const StyledLaunchDetails = styled.div`
 
   p { text-align: center; }
 `;
+
+export const StyledReplayButton = styled(StyledButton)`
+  position:absolute;
+  top:0;
+  right:0;
+  width: 80px;
+  height:40px;
+  z-index:1;
+`

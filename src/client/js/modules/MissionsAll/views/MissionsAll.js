@@ -5,9 +5,13 @@ import { BoxBlockHeader } from "shared/styled/Box";
 import { Loader } from "shared/styled/Loader";
 
 class MissionsAll extends React.Component {
+  componentDidMount() {
+    this.props.fetchMissionsRequestAction()
+  }
+
   renderCarousels() {
     if (this.props.isFetched) {
-      return this.props.data.map((item,index) => {
+      return this.props.data.map((item, index) => {
         return (
           <Carousel
             key={index}

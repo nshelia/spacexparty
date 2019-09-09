@@ -14,11 +14,16 @@ class RecentLaunches extends React.Component {
     limit: 2
   };
 
+  componentDidMount() {
+    this.props.fetchRecentLaunchesRequestAction(2)
+  }
+
   renderList() {
     if (this.props.isFetched) {
       return this.props.data.map((item, index) => {
         return (
           <Launch
+            url={item.links.video_link}
             image={item.links.mission_patch_small}
             title={item.mission_name}
             details={item.details}
@@ -40,7 +45,7 @@ class RecentLaunches extends React.Component {
           </BoxBlockHeaderText>
           <Link to="/launches">
             <BoxBlockHeaderButton>
-                See more
+              See more
             </BoxBlockHeaderButton>
           </Link>
         </BoxBlockHeader>
