@@ -5,6 +5,7 @@ import { hot } from "react-hot-loader";
 import { routes } from "routes";
 import { BaseCSS, Container, Row, Col } from "styled-bootstrap-grid";
 import { createGlobalStyle } from "styled-components";
+import { Helmet } from 'react-helmet'
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -31,27 +32,40 @@ const GlobalStyles = createGlobalStyle`
 
 function Application() {
   return (
-    <Container>
-      <Header />
-      <Row>
-        <Col col={12}>
-          <Switch>
-            {routes.map((route, index) => {
-              return (
-                <Route
-                  key={index}
-                  exact={route.exact}
-                  path={route.path}
-                  component={route.component}
-                />
-              );
-            })}
-          </Switch>
-        </Col>
-      </Row>
-      <BaseCSS />
-      <GlobalStyles />
-    </Container>
+    <>
+      <Helmet>
+        <Helmet>
+          <title>SpaceX Calendar</title>
+          <meta name="description" content="SpaceX rockets launch dates, videos and other great stuff about companys work." />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="SpaceX Calendar" />
+          <meta name="og:description" content="SpaceX rockets launch dates, videos and other great stuff about companys work." />
+        </Helmet>
+      </Helmet>
+      <Container>
+        <Header />
+        <Row>
+          <Col col={12}>
+            <Switch>
+              {routes.map((route, index) => {
+                return (
+                  <Route
+                    key={index}
+                    exact={route.exact}
+                    path={route.path}
+                    component={route.component}
+                  />
+                );
+              })}
+            </Switch>
+          </Col>
+        </Row>
+        <BaseCSS />
+        <GlobalStyles />
+      </Container>
+    </>
+
   );
 }
 export default hot(module)(Application);

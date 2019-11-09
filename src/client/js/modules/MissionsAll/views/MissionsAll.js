@@ -37,9 +37,7 @@ class MissionsAll extends React.Component {
 }
 
 MissionsAll.propTypes = {
-  limit: PropTypes.number.isRequired,
   isFetched: PropTypes.bool.isRequired,
-  clearStoreAction: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({})),
   fetchMissionsRequestAction: PropTypes.func.isRequired
 };

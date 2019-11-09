@@ -2,75 +2,165 @@
   "errors": [],
   "warnings": [],
   "version": "4.28.2",
-  "hash": "9f4e2f68f52cd65f3b42",
+  "hash": "f401e34a4ea657f70704",
   "publicPath": "/static/",
   "outputPath": "/Users/nshelia/Documents/projects/spacexparty/build",
   "assetsByChunkName": {
-    "vendors~Home~Launches~Missions~Vehicles": "vendors~Home~Launches~Missions~Vehicles-e74983832cfc586d9650.chunk.js",
-    "Home": "Home-5192d5556fb77e08ac2e.chunk.js",
-    "Launches": "Launches-e093426c5ed160f9bc49.chunk.js",
-    "Missions": "Missions-fc2688d26f1d8ee5e7ab.chunk.js",
-    "Vehicles": "Vehicles-dd1c68514b14c9628757.chunk.js",
-    "index": "index.bundle.js"
+    "Home": [
+      "Home-8806e2aa05f7a8e0c6d9.chunk.js",
+      "Home-8806e2aa05f7a8e0c6d9.chunk.js.map"
+    ],
+    "Home~Launches~Vehicles": [
+      "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js",
+      "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js.map"
+    ],
+    "Launches": [
+      "Launches-eb0248eb4ca00d23969d.chunk.js",
+      "Launches-eb0248eb4ca00d23969d.chunk.js.map"
+    ],
+    "Missions": [
+      "Missions-e7bb053a45ccdda819de.chunk.js",
+      "Missions-e7bb053a45ccdda819de.chunk.js.map"
+    ],
+    "Vehicles": [
+      "Vehicles-1b086ce85d502eedc036.chunk.js",
+      "Vehicles-1b086ce85d502eedc036.chunk.js.map"
+    ],
+    "index": [
+      "index.bundle.js",
+      "index.bundle.js.map"
+    ],
+    "vendors~Home": [
+      "vendors~Home-546c86e692a1a17656a3.chunk.js",
+      "vendors~Home-546c86e692a1a17656a3.chunk.js.map"
+    ],
+    "vendors~Home~Launches~Vehicles": [
+      "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js",
+      "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js.map"
+    ]
   },
   "assets": [
     {
-      "name": "Home-5192d5556fb77e08ac2e.chunk.js",
-      "size": 18452,
+      "name": "Home-8806e2aa05f7a8e0c6d9.chunk.js",
+      "size": 40546,
       "chunks": [
-        1
+        "Home"
       ],
       "chunkNames": [
         "Home"
       ]
     },
     {
-      "name": "Launches-e093426c5ed160f9bc49.chunk.js",
-      "size": 8188,
+      "name": "Home-8806e2aa05f7a8e0c6d9.chunk.js.map",
+      "size": 15479,
       "chunks": [
-        2
+        "Home"
+      ],
+      "chunkNames": [
+        "Home"
+      ]
+    },
+    {
+      "name": "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js",
+      "size": 29098,
+      "chunks": [
+        "Home~Launches~Vehicles"
+      ],
+      "chunkNames": [
+        "Home~Launches~Vehicles"
+      ]
+    },
+    {
+      "name": "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js.map",
+      "size": 12892,
+      "chunks": [
+        "Home~Launches~Vehicles"
+      ],
+      "chunkNames": [
+        "Home~Launches~Vehicles"
+      ]
+    },
+    {
+      "name": "Launches-eb0248eb4ca00d23969d.chunk.js",
+      "size": 14003,
+      "chunks": [
+        "Launches"
       ],
       "chunkNames": [
         "Launches"
       ]
     },
     {
-      "name": "Missions-fc2688d26f1d8ee5e7ab.chunk.js",
-      "size": 9171,
+      "name": "Launches-eb0248eb4ca00d23969d.chunk.js.map",
+      "size": 4723,
       "chunks": [
-        3
+        "Launches"
+      ],
+      "chunkNames": [
+        "Launches"
+      ]
+    },
+    {
+      "name": "Missions-e7bb053a45ccdda819de.chunk.js",
+      "size": 43611,
+      "chunks": [
+        "Missions"
       ],
       "chunkNames": [
         "Missions"
       ]
     },
     {
-      "name": "Vehicles-dd1c68514b14c9628757.chunk.js",
-      "size": 8412,
+      "name": "Missions-e7bb053a45ccdda819de.chunk.js.map",
+      "size": 20832,
       "chunks": [
-        4
+        "Missions"
+      ],
+      "chunkNames": [
+        "Missions"
+      ]
+    },
+    {
+      "name": "Vehicles-1b086ce85d502eedc036.chunk.js",
+      "size": 11615,
+      "chunks": [
+        "Vehicles"
       ],
       "chunkNames": [
         "Vehicles"
       ]
     },
     {
-      "name": "__offline_serviceworker",
-      "size": 8298,
-      "chunks": [],
-      "chunkNames": []
+      "name": "Vehicles-1b086ce85d502eedc036.chunk.js.map",
+      "size": 5176,
+      "chunks": [
+        "Vehicles"
+      ],
+      "chunkNames": [
+        "Vehicles"
+      ]
     },
     {
-      "name": "falcon9-c074093418062cef17d1a36b87a64838.jpg",
+      "name": "falcon9.jpg",
       "size": 3477,
       "chunks": [],
       "chunkNames": []
     },
     {
       "name": "index.bundle.js",
-      "size": 419430,
+      "size": 2309128,
       "chunks": [
-        5
+        "index"
+      ],
+      "chunkNames": [
+        "index"
+      ]
+    },
+    {
+      "name": "index.bundle.js.map",
+      "size": 2314963,
+      "chunks": [
+        "index"
       ],
       "chunkNames": [
         "index"
@@ -83,37 +173,67 @@
       "chunkNames": []
     },
     {
-      "name": "left-arrow-c8a77d14eaf96d5431ffabceef482b8d.svg",
+      "name": "left-arrow.svg",
       "size": 260,
       "chunks": [],
       "chunkNames": []
     },
     {
-      "name": "nextlaunch-ce61ac8afd3f34d0d5abd4595775c9f0.jpg",
+      "name": "nextlaunch.jpg",
       "size": 7157,
       "chunks": [],
       "chunkNames": []
     },
     {
-      "name": "right-arrow-f0b97a233f308d0bdcc5a9fd564bd076.svg",
+      "name": "right-arrow.svg",
       "size": 271,
       "chunks": [],
       "chunkNames": []
     },
     {
-      "name": "tail-spin-4bd6025ff0af5053b5f95ea13b762359.svg",
+      "name": "tail-spin.svg",
       "size": 1233,
       "chunks": [],
       "chunkNames": []
     },
     {
-      "name": "vendors~Home~Launches~Missions~Vehicles-e74983832cfc586d9650.chunk.js",
-      "size": 18609,
+      "name": "vendors~Home-546c86e692a1a17656a3.chunk.js",
+      "size": 10729,
       "chunks": [
-        0
+        "vendors~Home"
       ],
       "chunkNames": [
-        "vendors~Home~Launches~Missions~Vehicles"
+        "vendors~Home"
+      ]
+    },
+    {
+      "name": "vendors~Home-546c86e692a1a17656a3.chunk.js.map",
+      "size": 12522,
+      "chunks": [
+        "vendors~Home"
+      ],
+      "chunkNames": [
+        "vendors~Home"
+      ]
+    },
+    {
+      "name": "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js",
+      "size": 22765,
+      "chunks": [
+        "vendors~Home~Launches~Vehicles"
+      ],
+      "chunkNames": [
+        "vendors~Home~Launches~Vehicles"
+      ]
+    },
+    {
+      "name": "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js.map",
+      "size": 21403,
+      "chunks": [
+        "vendors~Home~Launches~Vehicles"
+      ],
+      "chunkNames": [
+        "vendors~Home~Launches~Vehicles"
       ]
     }
   ],
@@ -121,10 +241,11 @@
   "entrypoints": {
     "index": {
       "chunks": [
-        5
+        "index"
       ],
       "assets": [
-        "index.bundle.js"
+        "index.bundle.js",
+        "index.bundle.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -133,58 +254,76 @@
   "namedChunkGroups": {
     "index": {
       "chunks": [
-        5
+        "index"
       ],
       "assets": [
-        "index.bundle.js"
+        "index.bundle.js",
+        "index.bundle.js.map"
       ],
       "children": {},
       "childAssets": {}
     },
     "Home": {
       "chunks": [
-        0,
-        1
+        "vendors~Home~Launches~Vehicles",
+        "vendors~Home",
+        "Home~Launches~Vehicles",
+        "Home"
       ],
       "assets": [
-        "vendors~Home~Launches~Missions~Vehicles-e74983832cfc586d9650.chunk.js",
-        "Home-5192d5556fb77e08ac2e.chunk.js"
+        "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js",
+        "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js.map",
+        "vendors~Home-546c86e692a1a17656a3.chunk.js",
+        "vendors~Home-546c86e692a1a17656a3.chunk.js.map",
+        "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js",
+        "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js.map",
+        "Home-8806e2aa05f7a8e0c6d9.chunk.js",
+        "Home-8806e2aa05f7a8e0c6d9.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
     },
     "Missions": {
       "chunks": [
-        0,
-        3
+        "Missions"
       ],
       "assets": [
-        "vendors~Home~Launches~Missions~Vehicles-e74983832cfc586d9650.chunk.js",
-        "Missions-fc2688d26f1d8ee5e7ab.chunk.js"
+        "Missions-e7bb053a45ccdda819de.chunk.js",
+        "Missions-e7bb053a45ccdda819de.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
     },
     "Vehicles": {
       "chunks": [
-        0,
-        4
+        "vendors~Home~Launches~Vehicles",
+        "Home~Launches~Vehicles",
+        "Vehicles"
       ],
       "assets": [
-        "vendors~Home~Launches~Missions~Vehicles-e74983832cfc586d9650.chunk.js",
-        "Vehicles-dd1c68514b14c9628757.chunk.js"
+        "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js",
+        "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js.map",
+        "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js",
+        "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js.map",
+        "Vehicles-1b086ce85d502eedc036.chunk.js",
+        "Vehicles-1b086ce85d502eedc036.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
     },
     "Launches": {
       "chunks": [
-        0,
-        2
+        "vendors~Home~Launches~Vehicles",
+        "Home~Launches~Vehicles",
+        "Launches"
       ],
       "assets": [
-        "vendors~Home~Launches~Missions~Vehicles-e74983832cfc586d9650.chunk.js",
-        "Launches-e093426c5ed160f9bc49.chunk.js"
+        "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js",
+        "vendors~Home~Launches~Vehicles-4cbf501234436ee1b905.chunk.js.map",
+        "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js",
+        "Home~Launches~Vehicles-037299927f14e188f44c.chunk.js.map",
+        "Launches-eb0248eb4ca00d23969d.chunk.js",
+        "Launches-eb0248eb4ca00d23969d.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -196,59 +335,11 @@
       "warnings": [],
       "publicPath": "/static/",
       "outputPath": "/Users/nshelia/Documents/projects/spacexparty/build",
-      "assetsByChunkName": {
-        "__offline_serviceworker": "__offline_serviceworker"
-      },
-      "assets": [
-        {
-          "name": "__offline_serviceworker",
-          "size": 8298,
-          "chunks": [
-            0
-          ],
-          "chunkNames": [
-            "__offline_serviceworker"
-          ]
-        }
-      ],
-      "filteredAssets": 0,
-      "entrypoints": {
-        "__offline_serviceworker": {
-          "chunks": [
-            0
-          ],
-          "assets": [
-            "__offline_serviceworker"
-          ],
-          "children": {},
-          "childAssets": {}
-        }
-      },
-      "namedChunkGroups": {
-        "__offline_serviceworker": {
-          "chunks": [
-            0
-          ],
-          "assets": [
-            "__offline_serviceworker"
-          ],
-          "children": {},
-          "childAssets": {}
-        }
-      },
-      "children": [],
-      "name": "__offline_serviceworker"
-    },
-    {
-      "errors": [],
-      "warnings": [],
-      "publicPath": "/static/",
-      "outputPath": "/Users/nshelia/Documents/projects/spacexparty/build",
       "assetsByChunkName": {},
       "assets": [
         {
           "name": "index.html",
-          "size": 545187,
+          "size": 546497,
           "chunks": [
             0
           ],
