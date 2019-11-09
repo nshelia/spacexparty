@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import "@babel/polyfill";
 import React from "react";
 import { renderToString } from "react-dom/server";
@@ -15,11 +16,25 @@ import { Helmet } from 'react-helmet'
 import { matchRoutes } from "react-router-config";
 import { routes } from "routes";
 import { ChunkExtractor } from '@loadable/server'
+import LRUCache from 'lru-cache'
+
 
 const statsFile = path.resolve('build/loadable-stats.json')
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+const ssrCache = new LRUCache({
+  max: 100 * 1024 * 1024, /* cache size will be 100 MB using `return n.length` as length() function */
+  length: function (n, key) {
+    return n.length
+  },
+  maxAge: 1000 * 60 * 60 * 24 * 30
+});
+
+const getCacheKey = (req, theme) => {
+  return `${req.originalUrl}&appTheme=${theme}`
+}
 
 app.use(compression());
 
@@ -28,6 +43,15 @@ app.use("/static", express.static("build"));
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.get("/*", (req, res) => {
+  const key = getCacheKey(req, theme);
+  if (ssrCache.has(key)) {
+    console.log(`serving from cache ${key}`);
+    res.setHeader('x-cache', 'HIT');
+    res.send(ssrCache.get(key));
+    return
+  }
+
+
   const injectHTML = (data, { helmet, body, styleTags, scriptTags, state }) => {
     data = data.replace("</head>", `${helmet.title.toString()}${styleTags}</head>`);
     data = data.replace(
@@ -64,6 +88,9 @@ app.get("/*", (req, res) => {
       statsFile,
       entrypoints: ["index"]
     })
+    console.log(`key ${key} not found, rendering`);
+
+
     const jsx = extractor.collectChunks(<StyleSheetManager sheet={sheet.instance}>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
@@ -101,6 +128,8 @@ app.get("/*", (req, res) => {
       scriptTags,
       state: JSON.stringify(store.getState()).replace(/</g, "\\u003c")
     });
+    ssrCache.set(key, html);
+    res.setHeader('x-cache', 'MISS');
 
     return res.send(html);
 
